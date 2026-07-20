@@ -37,6 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # Walkies & Whiskers apps
+    "home.apps.HomeConfig",
+    "accounts.apps.AccountsConfig",
+    "pets.apps.PetsConfig",
+    "services.apps.ServicesConfig",
+    "bookings.apps.BookingsConfig",
+    "checkout.apps.CheckoutConfig",
 ]
 
 MIDDLEWARE = [
