@@ -10,7 +10,11 @@
     {% if services %}
         {% for service in services %}
             <article>
-                <h2>{{ service.name }}</h2>
+                <h2>
+                    <a href="{{ service.get_absolute_url }}">
+                        {{ service.name }}
+                    </a>
+                </h2>
 
                 <p>{{ service.description }}</p>
 

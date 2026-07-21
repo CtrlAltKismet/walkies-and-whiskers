@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ service.name }} | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+    <h1>{{ service.name }}</h1>
+
+    <p>{{ service.description }}</p>
+
+    <p>
+        Duration: {{ service.duration_minutes }} minutes
+    </p>
+
+    <p>
+        Price: £{{ service.price }}
+    </p>
+
+    {% if service.is_outdoor_service %}
+        <p>
+            This is an outdoor service. Weather guidance will be
+            provided during the booking process.
+        </p>
+    {% else %}
+        <p>
+            This is an indoor service.
+        </p>
+    {% endif %}
+
+    <p>
+        <a href="{% url 'service_list' %}">
+            Back to services
+        </a>
+    </p>
+{% endblock %}
