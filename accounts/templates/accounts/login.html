@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Login | Walklies & Whiskers
+    Login | Walkies & Whiskers
 {% endblock %}
 
 {% block content %}
     <h1>Log In</h1>
-
 
     <form method="post">
         {% csrf_token %}
@@ -18,7 +17,6 @@
         </button>
     </form>
 
-    
     <p>
         Need an account?
 
