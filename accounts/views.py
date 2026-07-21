@@ -2,8 +2,8 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import redirect, render
 from django.core.mail import send_mail
+from django.shortcuts import redirect, render
 
 from .forms import RegisterForm
 
@@ -25,6 +25,20 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+
+            send_mail(
+                subject="Welcome to Walkies & Whiskers",
+                message=(
+                    f"Hello {user.username},\n\n"
+                    "Your Walkies & Whiskers account has been "
+                    "created successfully.\n\n"
+                    "You can now add pet profiles and book "
+                    "pet-care services."
+                ),
+                from_email=None,
+                recipient_list=[user.email],
+                fail_silently=False,
+            )
 
             messages.success(
                 request,
