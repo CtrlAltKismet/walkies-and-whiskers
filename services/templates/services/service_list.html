@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Services | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+    <h1>Our Services</h1>
+
+    {% if services %}
+        {% for service in services %}
+            <article>
+                <h2>{{ service.name }}</h2>
+
+                <p>{{ service.description }}</p>
+
+                <p>
+                    Duration: {{ service.duration_minutes }} minutes
+                </p>
+
+                <p>
+                    Price: £{{ service.price }}
+                </p>
+
+                {% if service.is_outdoor_service %}
+                    <p>Outdoor service</p>
+                {% else %}
+                    <p>Indoor service</p>
+                {% endif %}
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>No services are currently available.</p>
+    {% endif %}
+{% endblock %}
