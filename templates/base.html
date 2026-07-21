@@ -48,15 +48,25 @@
                     </li>
 
                     <li>
-                        <a href="#">Logout</a>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+
+                            <button type="submit">
+                                Logout
+                            </button>
+                        </form>
                     </li>
                 {% else %}
                     <li>
-                        <a href="#">Register</a>
+                        <a href="{% url 'register' %}">
+                            Register
+                        </a>
                     </li>
 
                     <li>
-                        <a href="#">Login</a>
+                        <a href="{% url 'login' %}">
+                            Login
+                        </a>
                     </li>
                 {% endif %}
             </ul>
@@ -64,6 +74,17 @@
     </header>
 
     <main>
+        {% if messages %}
+            <section aria-label="Notifications">
+                {% for message in messages %}
+                    <p>
+                        {{ message }}
+                    </p>
+                {% endfor %}
+            </section>
+        {% endif %}
+
+        
         {% block content %}
         {% endblock %}
     </main>
