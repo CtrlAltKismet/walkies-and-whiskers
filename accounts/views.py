@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import redirect, render
+from django.core.mail import send_mail
 
 from .forms import RegisterForm
 
