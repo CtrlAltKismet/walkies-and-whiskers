@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ pet.name }} | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>{{ pet.name }}</h1>
+
+    <p>
+        <strong>Species:</strong>
+        {{ pet.species }}
+    </p>
+
+    <p>
+        <strong>Breed:</strong>
+        {% if pet.breed %}
+            {{ pet.breed }}
+        {% else %}
+            Not provided
+        {% endif %}
+    </p>
+
+    <p>
+        <strong>Age:</strong>
+        {% if pet.age %}
+            {{ pet.age }}
+        {% else %}
+            Not provided
+        {% endif %}
+    </p>
+
+    <p>
+        <strong>Size:</strong>
+        {{ pet.get_size_display }}
+    </p>
+
+    <p>
+        <strong>Temperament:</strong>
+        {{ pet.temperament }}
+    </p>
+
+    <p>
+        <strong>Medical notes:</strong>
+        {% if pet.medical_notes %}
+            {{ pet.medical_notes }}
+        {% else %}
+            No medical notes provided.
+        {% endif %}
+    </p>
+
+    <p>
+        <strong>Feeding notes:</strong>
+        {{ pet.feeding_notes }}
+    </p>
+
+    <p>
+        <a href="#">
+            Edit pet
+        </a>
+    </p>
+
+    <p>
+        <a href="#">
+            Delete pet
+        </a>
+    </p>
+
+    <p>
+        <a href="{% url 'pet_list' %}">
+            Back to my pets
+        </a>
+    </p>
+</section>
+{% endblock %}
