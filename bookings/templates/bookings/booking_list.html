@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+    My Bookings | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>My Bookings</h1>
+
+    <p>
+        View and track your pet-care bookings.
+    </p>
+
+    <p>
+        <a href="{% url 'booking_create' %}">
+            Create a new booking
+        </a>
+    <p>
+
+    
+    {% if bookings %}
+        <section>
+            <h2>Your bookings</h2>
+
+            {% for booking in bookings %}
+                <article>
+                    <h3>
+                        {{ booking.service.name }}
+                        for
+                        {{ booking.pet.name }}
+                    </h3>
+
+                    <p>
+                        <strong>Date:</strong>
+                        {{ booking.booking_date }}
+                    </p>
+
+                    <p>
+                        <strong>Price:</strong>
+                        £{{ booking.total_price }}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        {{ booking.get_status_display }}
+                    </p>
+
+                    {% if booking.notes %}
+                        <p>
+                            <strong>Notes:</strong>
+                            {{ booking.notes }}
+                        </p>
+                    {% endif %}
+
+                    {% if booking.status == booking.STATUS_PENDING %}
+                        <p>
+                            Payment is still required for this booking.
+                        </p>
+                    {% endif %}
+                </article>
+            {% endfor %}
+        </section>
+    {% else %}
+        <section>
+            <h2>No bookings yet</h2>
+
+            <p>
+                You have not created any pet-care bookings yet.
+            </p>
+
+            <p>
+                Create your first booking to arrange care for one of your pets.
+            </p>
+
+            <p>
+                <a href="{% url 'booking_create' %}">
+                    Create your first booking
+                </a>
+            </p>
+        </section>
+    {% endif %}
+</section>
+{% endblock %}
