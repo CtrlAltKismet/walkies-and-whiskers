@@ -50,4 +50,16 @@ urlpatterns = [
         ),
         name="password_reset_complete",
     ),
+    path(
+        "password-change/",
+        views.CustomPasswordChangeView.as_view(),
+        name="password_change",
+    ),
+    path(
+        "password-change/done/",
+        auth_views.PasswordChangeDoneView.as_view(
+            template_name="accounts/password_change_done.html",
+        ),
+        name="password_change_done",
+    ),
 ]
