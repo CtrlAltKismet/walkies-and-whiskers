@@ -4,6 +4,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import user_passes_test
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 
 from .forms import RegisterForm
 
@@ -86,4 +87,22 @@ class CustomLogoutView(auth_views.LogoutView):
             "You have been logged out successfully.",
         )
 
+        return response
+    
+    
+class CustomPasswordChangeView(auth_views.PasswordChangeView):
+    """Allow a logged-in user to change their password."""
+    
+    template_name = "accounts/password_change.html"
+    success_url = reverse_lazy("password_change_done")
+    
+    def form_valid(self, form):
+        """Display a success message after changing the password."""
+        response = super().form_valid(form)
+        
+        messages.success(
+            self.request,
+            "Your password has been changed successfully."
+        )
+        
         return response
