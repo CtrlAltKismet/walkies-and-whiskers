@@ -72,7 +72,7 @@ class PetForm(forms.ModelForm):
     
     def clean_feeding_notes(self):
         """Ensure useful feeding information is provided."""
-        feeding_notes = self.cleaned_date["feeding_notes"].strip()
+        feeding_notes = self.cleaned_data["feeding_notes"].strip()
         
         if not feeding_notes:
             raise forms.ValidationError(
