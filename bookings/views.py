@@ -69,7 +69,7 @@ def booking_list(request):
 
 @login_required
 def booking_detail(request, booking_id):
-    """Display a booking belonging to the logged-in user."""
+    """Display a detailed booking belonging to the logged-in user."""
     
     booking = get_object_or_404(
         Booking,

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Booking Details | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Booking details</h1>
+
+    <p>
+        Review the information for this pet-care booking.
+    </p>
+
+    <article>
+        <h2>
+            {{ booking.service.name }}
+            for
+            {{ booking.pet.name }}
+        </h2>
+
+        <p>
+            <strong>Pet:</strong>
+            {{ booking.pet.name }}
+        </p>
+
+        <p>
+            <strong>Service:</strong>
+            {{ booking.service.name }}
+        </p>
+
+        <p>
+            <strong>Date:</strong>
+            {{ booking.booking_date }}
+        </p>
+
+        <p>
+            <strong>Time:</strong>
+            {{ booking.booking_time }}
+        </p>
+
+        <p>
+            <strong>Price:</strong>
+            £{{ booking.total_price }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            {{ booking.get_status_display }}
+        </p>
+
+        <p>
+            <strong>Notes:</strong>
+            {% if booking.notes %}
+                {{ booking.notes }}
+            {% else %}
+                No additional notes provided.
+            {% endif %}
+        </p>
+
+        {% if booking.weather_summary %}
+            <p>
+                <strong>Weather guidance:</strong>
+                {{ booking.weather_summary }}
+            </p>
+        {% endif %}
+
+        {% if booking.status == booking.STATUS_PENDING %}
+            <section>
+                <h3>Payment required</h3>
+
+                <p>
+                    This booking is awaiting payment.
+                </p>
+
+                <p>
+                    Pay Now Button for Strip is here.
+                </p>
+            </section>
+        {% elif booking.status == booking.STATUS_CONFIRMED %}
+            <p>
+                This booking has been confirmed and no further payment is required.
+            </p>
+        {% elif booking.status == booking.STATUS_CANCELLED %}
+            <p>
+                This booking has been cancelled.
+            </p>
+        {% endif %}
+    </article>
+
+    <p>
+        <a href="{% url 'booking_list' %}">
+            Back to my bookings
+        </a>
+    </p>
+</section>
+{% endblock %}
