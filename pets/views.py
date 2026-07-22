@@ -67,4 +67,45 @@ def pet_detail(request, pet_id):
         context,
     )
     
+
+@login_required
+def pet_update(request, pet_id):
+    """Allow a user to update one of their own pet profiles."""
     
+    pet = get_object_or_404(
+        Pet,
+        id=pet_id,
+        owner=request.user,
+    )
+    
+    if request.method == "POST":
+        form = PetForm(
+            request.POST,
+            instance=pet,
+        )
+        
+        if form.is_valid():
+            pet = form.save()
+            
+            messages.success(
+                request,
+                f"{pet.name}'s profile has been updatede successfully.",
+            )
+            
+            return redirect(
+                "pet_detail",
+                pet_id=pet.id,
+            )
+    else:
+        form = PetForm(instance=pet)
+        
+    context = {
+        "form": form,
+        "pet": pet,
+    }
+    
+    return render(
+        request,
+        "pets/pet_update.html",
+        context,
+    )
