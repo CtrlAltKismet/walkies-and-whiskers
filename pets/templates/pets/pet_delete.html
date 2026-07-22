@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Delete {{ pet.name }} | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Delete {{ pet.name }}'s Profile</h1>
+
+    <p>
+        Are you sure you want to delete {{ pet.name }}'s pet profile?
+    </p>
+
+    <p>
+        This action cannot be undone.
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <button type="submit">
+            Yes, delete profile
+        </button>
+    </form>
+
+    <p>
+        <a href="{% url 'pet_detail' pet.id %}">
+            Cancel and return to {{ pet.name }}'s profile
+        </a>
+    </p>
+</section>
+{% endblock %}
