@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Add Pet | Walkies & Whiskers
+{% endblock %}
+
+
+{% block content %}
+<section>
+    <h1>Add a pet profile</h1>
+
+    <p>
+        Tell us about your pet so that future bookings can include
+        the care information they need.
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Create pet profile
+        </button>
+    </form>
+
+    <p>
+        <a href="{% url 'home' %}">
+            Cancel and return home
+        </a>
+    </p>
+</section>
+{% endblock %}
