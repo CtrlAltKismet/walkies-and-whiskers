@@ -24,7 +24,11 @@
 
             {% for pet in pets %}
                 <article>
-                    <h3>{{ pet.name }}</h3>
+                    <h3>
+                        <a href="{% url 'pet_detail' pet.id %}">
+                            {{ pet.name }}
+                        </a>
+                    </h3>
 
                     <p>
                         <strong>Species:</strong>
