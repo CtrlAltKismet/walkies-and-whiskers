@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import PetForm
 from .models import Pet
@@ -45,3 +45,26 @@ def pet_list(request):
     }
 
     return render(request, "pets/pet_list.html", context)
+
+
+@login_required
+def pet_detail(request, pet_id):
+    """Display a detailed pet profile belonging to the logged-in user."""
+    
+    pet = get_object_or_404(
+        Pet,
+        id=pet_id,
+        owner=request.user,
+    )
+    
+    context = {
+        "pet": pet,
+    }
+    
+    return render(
+        request,
+        "pets/pet_detail.html",
+        context,
+    )
+    
+    
