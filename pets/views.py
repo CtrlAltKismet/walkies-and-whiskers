@@ -109,3 +109,35 @@ def pet_update(request, pet_id):
         "pets/pet_update.html",
         context,
     )
+    
+
+@login_required
+def pet_delete(request, pet_id):
+    """Allow a user to delete one of their own pet profiles."""
+    
+    pet = get_object_or_404(
+        Pet,
+        id=pet_id,
+        owner=request.user,
+    )
+    
+    if request.method == "POST":
+        pet_name = pet.name
+        pet.delete()
+        
+        messages.success(
+            request,
+            f"{pet_name}'s profile has been deleted successfully.",
+        )
+        
+        return redirect("pet_list")
+    
+    context = {
+        "pet": pet,
+    }
+    
+    return render(
+        request,
+        "pets/pet_delete.html",
+        context,
+    )
