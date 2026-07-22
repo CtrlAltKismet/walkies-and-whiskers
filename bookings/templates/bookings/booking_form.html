@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Create Booking | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Create a booking</h1>
+
+    <p>
+        Choose one of your pets and an available pet-care service.
+    </p>
+
+    <p>
+        Your booking will remain pending until payment is completed.
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Create booking
+        </button>
+    </form>
+
+    <p>
+        <a href="{% url 'service_list' %}">
+            Back to services
+        </a>
+    </p>
+</section>
+{% endblock %}
