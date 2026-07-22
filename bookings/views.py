@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import BookingForm
 from .models import Booking
@@ -63,5 +63,26 @@ def booking_list(request):
     return render(
         request,
         "bookings/booking_list.html",
+        context,
+    )
+    
+
+@login_required
+def booking_detail(request, booking_id):
+    """Display a booking belonging to the logged-in user."""
+    
+    booking = get_object_or_404(
+        Booking,
+        id=booking_id,
+        user=request.user,
+    )
+    
+    context = {
+        "booking": booking,
+    }
+    
+    return render(
+        request,
+        "bookings/booking_detail.html",
         context,
     )
