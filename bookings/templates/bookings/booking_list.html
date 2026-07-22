@@ -26,9 +26,11 @@
             {% for booking in bookings %}
                 <article>
                     <h3>
-                        {{ booking.service.name }}
-                        for
-                        {{ booking.pet.name }}
+                        <a href="{% url 'booking_detail' booking.id %}">
+                            {{ booking.service.name }}
+                            for
+                            {{ booking.pet.name }}
+                        </a>
                     </h3>
 
                     <p>
