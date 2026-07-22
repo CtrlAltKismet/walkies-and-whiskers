@@ -48,6 +48,12 @@
                     </li>
 
                     <li>
+                        <a href="{% url 'password_change' %}">
+                            Change Password
+                        </a>
+                    </li>
+
+                    <li>
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
 
