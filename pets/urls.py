@@ -20,6 +20,11 @@ urlpatterns = [
         name="pet_update",
     ),
     path(
+        "<int:pet_id>/delete/",
+        views.pet_delete,
+        name="pet_delete",
+    ),
+    path(
         "add/",
         views.pet_create,
         name="pet_create",
