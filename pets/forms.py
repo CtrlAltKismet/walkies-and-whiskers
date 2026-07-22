@@ -32,6 +32,7 @@ class PetForm(forms.ModelForm):
                     "rows": 3,
                     "placeholder": (
                         "Include allergies, medication or other care needs."
+                        "Leave blank if there are none."
                     ),
                 }
             ),
@@ -39,7 +40,8 @@ class PetForm(forms.ModelForm):
                 attrs={
                     "rows": 3,
                     "placeholder": (
-                        "Include feeding times, portions or dietary needs."
+                        "Include feeding times, portions or dietary needs or state "
+                        "that there are no special feeding requirements."
                     ),
                 }
             ),
@@ -66,3 +68,16 @@ class PetForm(forms.ModelForm):
             )
 
         return species
+
+    
+    def clean_feeding_notes(self):
+        """Ensure useful feeding information is provided."""
+        feeding_notes = self.cleaned_date["feeding_notes"].strip()
+        
+        if not feeding_notes:
+            raise forms.ValidationError(
+                "Please provide feeding instructions or state that there "
+                "are no special feeding requirements."
+            )
+        
+        return feeding_notes
