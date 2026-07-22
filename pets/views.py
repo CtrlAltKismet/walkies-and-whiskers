@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from .forms import PetForm
+from .models import Pet
 
 
 @login_required
@@ -32,3 +33,16 @@ def pet_create(request):
     }
     
     return render(request, "pets/pet_form.html", context)
+
+
+@login_required
+def pet_list(request):
+    """Display pet profiles belonging to the logged-in user."""
+    
+    pets = Pet.objects.filter(owner=request.user)
+    
+    context = {
+        "pets": pets,
+    }
+    
+    return render(request, "pets/pet_list.html", context)
