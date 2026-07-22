@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Edit {{ pet.name }} | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Edit {{ pet.name }}'s Profile</h1>
+
+    <p>
+        Update the information below to keep your pet's care details accurate.
+    </p>
+
+    <form method="post">
+        {% cstf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Save changes
+        </button>
+    </form>
+
+    <p>
+        <a href="{% url 'pet_detail' pet.id %}">
+            Cancel and return to {{ pet.name }}'s profile
+        </a>
+    </p>
+</section>
+{% endblock %}
