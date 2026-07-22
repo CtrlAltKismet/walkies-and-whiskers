@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 
-from .forms import RegisterForm
+from .forms import CustomPasswordChangeForm, RegisterForm
 
 
 def anonymous_required(view_function):
@@ -94,6 +94,7 @@ class CustomPasswordChangeView(auth_views.PasswordChangeView):
     """Allow a logged-in user to change their password."""
     
     template_name = "accounts/password_change.html"
+    form_class = CustomPasswordChangeForm
     success_url = reverse_lazy("password_change_done")
     
     def form_valid(self, form):
