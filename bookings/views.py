@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from .forms import BookingForm
+from .models import Booking
 
 
 @login_required
@@ -40,5 +41,27 @@ def booking_create(request):
     return render(
         request,
         "bookings/booking_form.html",
+        context,
+    )
+    
+
+@login_required
+def booking_list(request):
+    """Display bookings belonging to the logged-in user."""
+    
+    bookings = Booking.objects.filter(
+        user=request.user,
+    ).order_by(
+        "booking_date",
+        "booking_time",
+    )
+    
+    context = {
+        "bookings": bookings,
+    }
+    
+    return render(
+        request,
+        "bookings/booking_list.html",
         context,
     )
