@@ -65,7 +65,7 @@
             </p>
         {% endif %}
 
-        {% if booking.status == booking.STATUS_PENDING %}
+        {% if booking.status == booking.STATUS_PENDING and not booking_has_passed %}
             <section>
                 <h3>Payment required</h3>
 
@@ -84,6 +84,12 @@
                     </button>
                 </form>
             </section>
+        
+        {% elif booking.status == booking.STATUS_PENDING and booking_has_passed %}
+            <p>
+                This booking date has passed and payment is no longer available.
+            </p>
+            
         {% elif booking.status == booking.STATUS_CONFIRMED %}
             <p>
                 This booking has been confirmed and no further payment is required.
