@@ -14,7 +14,6 @@ from bookings.models import Booking
 def create_checkout_session(request, booking_id):
     """Create a Stripe Checkout Session for a pending booking."""
     
-    
     booking = get_object_or_404(
         Booking,
         id=booking_id,

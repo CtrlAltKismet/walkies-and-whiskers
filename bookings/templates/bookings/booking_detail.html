@@ -73,9 +73,16 @@
                     This booking is awaiting payment.
                 </p>
 
-                <p>
-                    Pay Now Button for Strip is here.
-                </p>
+                <form
+                    method="post"
+                    action="{% url 'create_checkout_session' booking.id %}"
+                >
+                    {% csrf_token %}
+
+                    <buttonn type="submit">
+                        Pay Now
+                    </button>
+                </form>
             </section>
         {% elif booking.status == booking.STATUS_CONFIRMED %}
             <p>
