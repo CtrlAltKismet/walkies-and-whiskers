@@ -1,7 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import (
+    login_required,
+    user_passes_test,
+)
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -107,3 +110,13 @@ class CustomPasswordChangeView(auth_views.PasswordChangeView):
         )
         
         return response
+    
+
+@login_required
+def dashboard(request):
+    """Risplay the logged-in user's account dashboard."""
+    
+    return render(
+        request,
+        "accounts/dashboard.html",
+    )
