@@ -184,3 +184,31 @@ def payment_success(request):
         "checkout/payment_success.html",
         context,
     )
+    
+
+@login_required
+def payment_cancel(request, booking_id):
+    """Show feedback after a user cancels Stripe Checkout."""
+    
+    booking = get_object_or_404(
+        Booking,
+        id=booking_id,
+        user=request.user,
+        status=Booking.STATUS_PENDING
+    )
+    
+    messages.info(
+        request,
+        "Payment was cancelled. Your booking is still awaiting payment.",
+    )
+    
+    context = {
+        "booking": booking,
+    }
+    
+    return render(
+        request,
+        "checkout/payment_cancel.html"
+        context,
+    )
+    
