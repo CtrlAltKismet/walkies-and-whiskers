@@ -14,4 +14,9 @@ urlpatterns = [
         views.payment_success,
         name="payment_success",
     ),
+    path(
+        "cancel/<int:booking_id>/",
+        views.payment_cancel,
+        name="payment_cancel",
+    ),
 ]
