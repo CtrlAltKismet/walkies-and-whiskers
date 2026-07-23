@@ -22,7 +22,7 @@ class Order(models.Model):
         on_delete=models.PROTECT,
         related_name="orders",
     )
-    booking = models.OneToONeField(
+    booking = models.OneToOneField(
         Booking,
         on_delete=models.PROTECT,
         related_name="order",
@@ -33,7 +33,7 @@ class Order(models.Model):
     )
     stripe_payment_intent = models.CharField(
         max_length=255,
-        blanke=True,
+        blank=True,
     )
     amount = models.DecimalField(
         max_digits=8,
@@ -48,7 +48,7 @@ class Order(models.Model):
         auto_now_add=True,
     )
     updated_at = models.DateTimeField(
-        auto_now=True
+        auto_now=True,
     )
     
     class Meta:
