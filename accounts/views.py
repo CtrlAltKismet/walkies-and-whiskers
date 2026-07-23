@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import (
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
+from django.utils import timezone
 
 from bookings.models import Booking
 from pets.models import Pet
@@ -132,10 +133,20 @@ def dashboard(request):
         status=Booking.STATUS_PENDING,
     ).count()
     
+    upcoming_bookings = Booking.objects.filter(
+        user=request.user,
+        status=Booking.STATUS_CONFIRMED,
+        booking_date__gte=timezone.localdate(),
+    ).order_by(
+        "booking_date",
+        "booking_time",
+    )[:3]
+    
     context= {
         "pet_count": pet_count,
         "booking_count": booking_count,
         "pending_booking_count": pending_booking_count,
+        "upcoming_bookings": upcoming_bookings,
     }
     
     return render(
