@@ -9,6 +9,9 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 
+from bookings.models import Booking
+from pets.models import Pet
+
 from .forms import CustomPasswordChangeForm, RegisterForm
 
 
@@ -114,9 +117,18 @@ class CustomPasswordChangeView(auth_views.PasswordChangeView):
 
 @login_required
 def dashboard(request):
-    """Risplay the logged-in user's account dashboard."""
+    """Display the logged-in user's account dashboard."""
+    
+    pet_count = Pet.objects.filter(
+        owner=request.user,
+    ).count()
+    
+    context= {
+        "pet_count": pet_count,
+    }
     
     return render(
         request,
         "accounts/dashboard.html",
+        context,
     )
