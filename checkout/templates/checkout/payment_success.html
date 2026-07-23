@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Payment Successful | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Payment successful</h1>
+
+    <p>
+        Your payment has been completed successfully.
+    </p>
+
+    <p>
+        Your booking for
+        {{ booking.service.name }}
+        with
+        {{ booking.pet.name }}
+        is now confirmed.
+    </p>
+
+    <p>
+        <strong>Amount paid:</strong>
+        £{{ order.amount }}
+    </p>
+
+    <p>
+        <strong>Booking status:</strong>
+        {{ booking.get_status_display }}
+    </p>
+
+    <p>
+        <a href="{% url 'booking_detail' booking.id %}">
+            View booking details
+        </a>
+    </p>
+
+    <p>
+        <a href="{% url 'booking_list' %}">
+            Return to my bookings
+        </a>
+    </p>
+</section>
+{% endblock %}
