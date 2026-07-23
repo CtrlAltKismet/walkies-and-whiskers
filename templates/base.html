@@ -36,7 +36,9 @@
 
                 {% if user.is_authenticated %}
                     <li>
-                        <a href="#">Dashboard</a>
+                        <a href="{% url 'dashboard' %}">
+                            Dashboard
+                        </a>
                     </li>
 
                     <li>
