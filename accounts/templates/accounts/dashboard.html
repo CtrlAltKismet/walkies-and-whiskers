@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dashboard | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Your dashboard</h1>
+
+    <p>
+        Welcome back, {{ user.username }}!
+    </p>
+
+    <p>
+        Manage your pets and bookings from here.
+    </p>
+</section>
+{% endblock %}
