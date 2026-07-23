@@ -14,37 +14,37 @@ from .models import Order
 @login_required
 def create_checkout_session(request, booking_id):
     """Create a Stripe Checkout Session for a pending booking."""
-    
+
     booking = get_object_or_404(
         Booking,
         id=booking_id,
         user=request.user,
         status=Booking.STATUS_PENDING,
     )
-    
+
     if request.method != "POST":
         messages.error(
             request,
             "Please use the Pay Now button to begin checkout.",
         )
-        
+
         return redirect(
             "booking_detail",
             booking_id=booking.id,
         )
-    
+
     stripe.api_key = settings.STRIPE_SECRET_KEY
-    
+
     amount_in_pence = int(
         booking.total_price * Decimal("100")
     )
-    
+
     success_url = request.build_absolute_uri(
         reverse("payment_success")
     )
-    
+
     success_url += "?session_id={CHECKOUT_SESSION_ID}"
-    
+
     cancel_url = request.build_absolute_uri(
         reverse(
             "booking_detail",
@@ -53,7 +53,7 @@ def create_checkout_session(request, booking_id):
             },
         )
     )
-    
+
     checkout_session = stripe.checkout.Session.create(
         mode="payment",
         payment_method_types=["card"],
@@ -80,12 +80,12 @@ def create_checkout_session(request, booking_id):
         success_url=success_url,
         cancel_url=cancel_url,
     )
-    
+
     return redirect(
         checkout_session.url,
         code=303,
     )
-    
+
 
 @login_required
 def payment_success(request):
@@ -129,7 +129,6 @@ def payment_success(request):
         Booking,
         id=booking_id,
         user=request.user,
-        status=Booking.STATUS_PENDING,
     )
 
     expected_amount = int(
@@ -147,11 +146,11 @@ def payment_success(request):
             booking_id=booking.id,
         )
 
-    Order.objects.update_or_create(
-        booking=booking,
+    order, created = Order.objects.update_or_create(
+        stripe_checkout_id=checkout_session.id,
         defaults={
             "user": request.user,
-            "stripe_checkout_id": checkout_session.id,
+            "booking": booking,
             "stripe_payment_intent": (
                 checkout_session.payment_intent or ""
             ),
@@ -160,13 +159,15 @@ def payment_success(request):
         },
     )
 
-    booking.status = Booking.STATUS_CONFIRMED
-    booking.save(
-        update_fields=[
-            "status",
-            "updated_at",
-        ]
-    )
+    if booking.status == Booking.STATUS_PENDING:
+        booking.status = Booking.STATUS_CONFIRMED
+
+        booking.save(
+            update_fields=[
+                "status",
+                "updated_at",
+            ]
+        )
 
     messages.success(
         request,
@@ -175,7 +176,7 @@ def payment_success(request):
 
     context = {
         "booking": booking,
-        "order": booking.order,
+        "order": order,
     }
 
     return render(
