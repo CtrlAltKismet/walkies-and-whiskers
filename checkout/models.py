@@ -50,3 +50,13 @@ class Order(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True
     )
+    
+    class Meta:
+        ordering = ["-created_at"]
+        
+    def __str__(self):
+        """Return a readable order description."""
+        return (
+            f"Order for booking {self.booking.id} "
+            f"({self.get_status_display()})"
+        )
