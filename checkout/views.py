@@ -4,6 +4,7 @@ import stripe
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
@@ -188,6 +189,28 @@ def payment_success(request):
                 "status",
                 "updated_at",
             ]
+        )
+        
+    if created:
+        send_mail(
+            subject="Your Walkies & Whiskers booking is confirmed",
+            message=(
+                f"Hello {request.user.username},\n\n"
+                "Thank you for your payment. Your booking is now "
+                "confirmed.\n\n"
+                f"Pet: {booking.pet.name}\n"
+                f"Service: {booking.service.name}\n"
+                f"Date: {booking.booking_date.strftime('%d %B %Y')}\n"
+                f"Time: {booking.booking_time.strftime('%H:%M')}\n"
+                f"Amount paid: £{booking.total_price}\n"
+                f"Status: {booking.get_status_display()}\n\n"
+                "You can view the full booking details from the "
+                "My Bookings section of your account.\n\n"
+                "Thank you for choosing Walkies & Whiskers."
+            ),
+            from_email=None,
+            recipient_list=[request.user.email],
+            fail_silently=False,
         )
 
     messages.success(
