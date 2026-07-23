@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Payment Cancelled | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Payment cancelled</h1>
+
+    <p>
+        Your payment was not completed.
+    </p>
+
+    <p>
+        Your booking for
+        {{ booking.service.name }}
+        with
+        {{ booking.pet.name }}
+        is still awaiting payment.
+    </p>
+
+    <p>
+        Your booking has not been confirmed, but you can return
+        to the booking details page and try again.
+    </p>
+
+    <p>
+        <a href="{% url 'booking_detail' booking.id %}">
+            Return to booking details
+        </a>
+    </p>
+
+    <p>
+        <a href="{% url 'booking_list' %}">
+            Return to my bookings
+        </a>
+    </p>
+</section>
+{% endblock %}
