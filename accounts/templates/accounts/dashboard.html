@@ -39,6 +39,12 @@
         </p>
 
         <p>
+            {{ pending_booking_count }}
+            booking{{ pending_booking_count|pluralize }}
+            still need{{ pending_booking_count|pluralize:"s," }} payment.
+        </p>
+
+        <p>
             <a href="{% url 'booking_list' %}">
                 View my bookings
             </a>
