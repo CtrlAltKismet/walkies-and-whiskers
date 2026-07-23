@@ -16,7 +16,7 @@
         <a href="{% url 'booking_create' %}">
             Create a new booking
         </a>
-    <p>
+    </p>
 
     
     {% if bookings %}
@@ -55,9 +55,14 @@
                         </p>
                     {% endif %}
 
-                    {% if booking.status == booking.STATUS_PENDING %}
+                    {% if booking.status == booking.STATUS_PENDING and not booking.has_passed %}
                         <p>
                             Payment is still required for this booking.
+                        </p>
+
+                    {% elif booking.status == booking.STATUS_PENDING and booking.has_passed %}
+                        <p>
+                            This booking date has passed and payment is no longer available.
                         </p>
                     {% endif %}
                 </article>
