@@ -15,5 +15,19 @@
     <p>
         Manage your pets and bookings from here.
     </p>
+
+    <section>
+        <h2>Your pets</h2>
+
+        <p>
+            You currently have {{ pet_count }} pet profile{{ pet_count|pluralize }}.
+        </p>
+
+        <p>
+            <a href="{% url 'pet_list' %}">
+                View my pets
+            </a>
+        </p>
+    </section>
 </section>
 {% endblock %}
