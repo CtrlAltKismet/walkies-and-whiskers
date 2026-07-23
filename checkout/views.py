@@ -123,7 +123,7 @@ def payment_success(request):
 
         return redirect("booking_list")
 
-    booking_id = checkout_session.metadata.get("booking_id")
+    booking_id = checkout_session.metadata["booking_id"]
 
     booking = get_object_or_404(
         Booking,
