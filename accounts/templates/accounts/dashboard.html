@@ -29,5 +29,20 @@
             </a>
         </p>
     </section>
+    
+    <section>
+        <h2>Your bookings</h2>
+
+        <p>
+            You currently have {{ booking_count }}
+            booking{{ booking_count|pluralize }}.
+        </p>
+
+        <p>
+            <a href="{% url 'booking_list' %}">
+                View my bookings
+            </a>
+        </p>
+    </section>
 </section>
 {% endblock %}
