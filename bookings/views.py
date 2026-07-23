@@ -66,6 +66,16 @@ def booking_list(request):
         "booking_time",
     )
     
+    for booking in bookings:
+        booking_datetime = timezone.make_aware(
+            datetime.combine(
+                booking.booking_date,
+                booking.booking_time,
+            )
+        )
+        
+        booking.has_passed = booking_datetime <= timezone.now()
+    
     context = {
         "bookings": bookings,
     }
