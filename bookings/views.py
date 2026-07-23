@@ -128,6 +128,26 @@ def booking_cancel(request, booking_id):
         user=request.user,
     )
     
+    if request.method == "POST":
+        booking.status = Booking.STATUS_CANCELLED
+        
+        booking.save(
+            update_fields=[
+                "status",
+                "updated_at",
+            ]
+        )
+        
+        messages.success(
+            request,
+            "Your booking has been cancelled successfully.",
+        )
+        
+        return redirect(
+            "booking_detail",
+            booking_id=booking.id,
+        )
+        
     return render(
         request,
         "bookings/booking_cancel.html",
