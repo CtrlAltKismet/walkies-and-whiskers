@@ -47,3 +47,35 @@ def create_checkout_session(request, booking_id):
             },
         )
     )
+    
+    checkout_session = stripe.checkout.Session.create(
+        mode="payment",
+        payment_method_types=["card"],
+        line_items=[
+            {
+                "price_data": {
+                    "currency": "gbp",
+                    "unit_amount": amount_in_pence,
+                    "product_data": {
+                        "name": booking.service.name,
+                        "description": (
+                            f"Pet-care booking for "
+                            f"{booking.pet.name}"
+                        ),
+                    },
+                },
+                "quantity": 1,
+            },
+        ],
+        metadata={
+            "booking_id": str(booking.id),
+            "user_id": str(request.user.id),
+        },
+        success_url=success_url,
+        cancel_url=cancel_url,
+    )
+    
+    return redirect(
+        checkout_session.url,
+        code=303,
+    )
