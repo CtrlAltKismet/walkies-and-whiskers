@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import BookingForm
 from .models import Booking
+from .weather import get_weather_guidance
 
 
 @login_required
@@ -25,6 +26,12 @@ def booking_create(request):
         booking.user = request.user
         booking.status = booking.STATUS_PENDING
         booking.total_price = booking.service.price
+        
+        if booking.service.is_outdoor_service:
+            booking.weather_summary = get_weather_guidance(
+                booking.booking_date,
+            )
+        
         booking.save()
 
         messages.success(
