@@ -22,6 +22,11 @@ urlpatterns = [
         name="logout",
     ),
     path(
+        "dashboard/",
+        views.dashboard,
+        name="dashboard",
+    ),
+    path(
         "password-reset/",
         auth_views.PasswordResetView.as_view(
             template_name="accounts/password_reset.html",
