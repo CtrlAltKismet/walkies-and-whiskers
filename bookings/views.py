@@ -116,3 +116,22 @@ def booking_detail(request, booking_id):
         "bookings/booking_detail.html",
         context,
     )
+    
+
+@login_required
+def booking_cancel(request, booking_id):
+    """Allow a user to cancel one of their own bookings."""
+    
+    booking = get_object_or_404(
+        Booking,
+        id=booking_id,
+        user=request.user,
+    )
+    
+    return render(
+        request,
+        "bookings/booking_cancel.html",
+        {
+            "booking": booking,
+        },
+    )
