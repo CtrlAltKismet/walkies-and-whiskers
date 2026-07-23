@@ -9,8 +9,4 @@ urlpatterns = [
         views.create_checkout_session,
         name="create_checkout_session",
     ),
-    path(
-        "checkout/",
-        include("checkout.urls"),
-    ),
 ]
