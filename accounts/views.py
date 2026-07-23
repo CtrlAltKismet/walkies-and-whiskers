@@ -127,9 +127,15 @@ def dashboard(request):
         user=request.user,
     ).count()
     
+    pending_booking_count = Booking.objects.filter(
+        user=request.user,
+        status=Booking.STATUS_PENDING,
+    ).count()
+    
     context= {
         "pet_count": pet_count,
         "booking_count": booking_count,
+        "pending_booking_count": pending_booking_count,
     }
     
     return render(
