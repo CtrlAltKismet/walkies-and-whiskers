@@ -84,19 +84,28 @@
                     </button>
                 </form>
             </section>
-        
+
         {% elif booking.status == booking.STATUS_PENDING and booking_has_passed %}
             <p>
                 This booking date has passed and payment is no longer available.
             </p>
-            
+
         {% elif booking.status == booking.STATUS_CONFIRMED %}
             <p>
                 This booking has been confirmed and no further payment is required.
             </p>
+
         {% elif booking.status == booking.STATUS_CANCELLED %}
             <p>
                 This booking has been cancelled.
+            </p>
+        {% endif %}
+
+        {% if booking.status != booking.STATUS_CANCELLED %}
+            <p>
+                <a href="{% url 'booking_cancel' booking.id %}">
+                    Cancel booking
+                </a>
             </p>
         {% endif %}
     </article>
