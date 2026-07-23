@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 
 from bookings.models import Booking
+from .models import Order
 
 
 @login_required
@@ -87,3 +88,18 @@ def create_checkout_session(request, booking_id):
         checkout_session.url,
         code=303,
     )
+    
+
+@login_required
+def payment_success(request):
+    """Confirm a booking after verifying a successful Stripe payment."""
+    
+    session_id = request.GEt.get("session_id")
+    
+    if not session_id:
+        messages.error(
+            request,
+            "The payment could not be verified.",
+        )
+        
+        return redirect("booking_list")
