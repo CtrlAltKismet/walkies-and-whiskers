@@ -47,7 +47,7 @@ def create_checkout_session(request, booking_id):
 
     cancel_url = request.build_absolute_uri(
         reverse(
-            "booking_cancel",
+            "payment_cancel",
             kwargs={
                 "booking_id": booking.id,
             },
