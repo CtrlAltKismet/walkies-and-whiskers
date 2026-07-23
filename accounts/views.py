@@ -123,8 +123,13 @@ def dashboard(request):
         owner=request.user,
     ).count()
     
+    booking_count = Booking.objects.filter(
+        user=request.user,
+    ).count()
+    
     context= {
         "pet_count": pet_count,
+        "booking_count": booking_count,
     }
     
     return render(
