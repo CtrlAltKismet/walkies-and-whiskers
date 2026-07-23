@@ -2,6 +2,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 
+from datetime import datetime
+from django.utils import timezone
+
 from .forms import BookingForm
 from .models import Booking
 from .weather import get_weather_guidance
@@ -84,8 +87,18 @@ def booking_detail(request, booking_id):
         user=request.user,
     )
     
+    booking_datetime = timezone.make_aware(
+        datetime.combine(
+            booking.booking_date,
+            booking.booking_time,
+        )
+    )
+    
+    booking_has_passed = booking_datetime <= timezone.now()
+    
     context = {
         "booking": booking,
+        "booking_has_passed": booking_has_passed,
     }
     
     return render(
