@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
+from datetime import datetime
+from django.utils import timezone
+
 from bookings.models import Booking
 from .models import Order
 
@@ -21,6 +24,24 @@ def create_checkout_session(request, booking_id):
         user=request.user,
         status=Booking.STATUS_PENDING,
     )
+    
+    booking_datetime = timezone.make_aware(
+        datetime.combine(
+            booking.booking_date,
+            booking.booking_time,
+        )
+    )
+    
+    if booking_datetime <= timezone.now():
+        messages.error(
+            request,
+            "This booking date has already passed and can no longer be paid.",
+        )
+        
+        return redirect(
+            "booking_detail",
+            booking_id=booking.id,
+        )
 
     if request.method != "POST":
         messages.error(
