@@ -46,6 +46,9 @@ class Pet(models.Model):
     )
     feeding_notes = models.TextField(
     )
+    is_active = models.BooleanField(
+        default=True,
+    )
     created_at = models.DateTimeField(
         auto_now_add=True,
     )
