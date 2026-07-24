@@ -127,7 +127,7 @@ def pet_delete(request, pet_id):
         owner=request.user,
     )
     
-    has_booking_history = pet.bookings.exist()
+    has_booking_history = pet.bookings.exists()
     
     if request.method == "POST":
         pet_name = pet.name
