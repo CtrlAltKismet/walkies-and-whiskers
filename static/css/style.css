@@ -1,0 +1,42 @@
+@import url(
+    "https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito:wght@400;500;600;700&display=swap"
+);
+
+/* Colour palette */
+
+:root {
+    --colour-cream: #f8f2e7;
+    --colour-paper: #fffaf1;
+    --colour-paper-dark: #eee2d0;
+    --colour-sage: #a8b89a;
+    --colour-sage-light: #d8e1ce;
+    --colour-moss: #64765d;
+    --colour-forest: #34483a;
+    --colour-forest-dark: #243329;
+    --colour-terracotta: #c98263;
+    --colour-terracotta-dark: #a86149;
+    --colour-brown: #725b49;
+    --colour-charcoal: #30352f;
+    --colour-muted: #6d746d;
+    --colour-white: #ffffff;
+    --colour-danger: #a9483c;
+    --colour-danger-dark: #84352d;
+    --colour-success: #527050;
+    --colour-warning: #9a6a2f;
+
+    --font-heading: "Fraunces", Georgia, serif;
+    --font-body: "Nunito", Arial, sans-serif;
+    --font-handwritten: "Caveat", cursive;
+
+    --shadow-small: 0 4px 12px rgba(52, 72, 58, 0.1);
+    --shadow-medium: 0 10px 28px rgba(52, 72, 58, 0.14);
+    --shadow-large: 0 18px 45px rgba(52, 72, 58, 0.17);
+
+    --border-paper: 1px solid rgba(114, 91, 73, 0.2);
+    --border-radius-small: 8px;
+    --border-radius-medium: 16px;
+    --border-radius-large: 26px;
+
+    --page-width: 1180px;
+}
+
