@@ -89,7 +89,7 @@ def pet_update(request, pet_id):
             
             messages.success(
                 request,
-                f"{pet.name}'s profile has been updatede successfully.",
+                f"{pet.name}'s profile has been updated successfully.",
             )
             
             return redirect(
