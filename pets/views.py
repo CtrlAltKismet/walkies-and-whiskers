@@ -131,15 +131,31 @@ def pet_delete(request, pet_id):
     
     if request.method == "POST":
         pet_name = pet.name
-        pet.delete()
         
-        messages.success(
-            request,
-            f"{pet_name}'s profile has been deleted successfully.",
-        )
+        if has_booking_history:
+            pet.is_active = False
+            
+            pet.save(
+                update_fields=[
+                    "is_active",
+                    "updated_at",
+                ]
+            )
+            
+            messages.success(
+                request,
+                f"{pet_name}'s profile has been archived successfully.",
+            )
+        else:
+            pet.delete()
+            
+            messages.success(
+                request,
+                f"{pet_name}'s profile has been deleted successfully.",
+            )
         
         return redirect("pet_list")
-    
+         
     context = {
         "pet": pet,
         "has_booking_history": has_booking_history,
