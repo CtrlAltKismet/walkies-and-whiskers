@@ -1,28 +1,62 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Delete {{ pet.name }} | Walkies & Whiskers
+    {% if has_booking_history %}
+        Archive {{ pet.name }} | Walkies & Whiskers
+    {% else %}
+        Delete {{ pet.name }} | Walkies & Whiskers
+    {% endif %}
 {% endblock %}
 
 {% block content %}
 <section>
-    <h1>Delete {{ pet.name }}'s Profile</h1>
+    {% if has_booking_history %}
+        <h1>Archive {{ pet.name }}'s profile</h1>
 
-    <p>
-        Are you sure you want to delete {{ pet.name }}'s pet profile?
-    </p>
+        <p>
+            {{ pet.name }} has booking history connected to their profile.
+        </p>
 
-    <p>
-        This action cannot be undone.
-    </p>
+        <p>
+            The profile cannot be permanently deleted because the booking
+            records need to be kept.
+        </p>
 
-    <form method="post">
-        {% csrf_token %}
+        <p>
+            Archiving the profile will hide it from your pet list and prevent
+            it from being used for new bookings.
+        </p>
 
-        <button type="submit">
-            Yes, delete profile
-        </button>
-    </form>
+        <p>
+            Any upcoming bookings connected to this pet will be cancelled.
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <button type="submit">
+                Yes, archive profile
+            </button>
+        </form>
+    {% else %}
+        <h1>Delete {{ pet.name }}'s profile</h1>
+
+        <p>
+            Are you sure you want to delete {{ pet.name }}'s pet profile?
+        </p>
+
+        <p>
+            This action cannot be undone.
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <button type="submit">
+                Yes, delete profile
+            </button>
+        </form>
+    {% endif %}
 
     <p>
         <a href="{% url 'pet_detail' pet.id %}">
