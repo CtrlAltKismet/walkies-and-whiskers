@@ -19,7 +19,9 @@ def booking_create(request):
     else:
         form = BookingForm()
 
-    form.fields["pet"].queryset = request.user.pets.all()
+    form.fields["pet"].queryset = request.user.pets.filter(
+        is_active=True,
+    )
     form.fields["service"].queryset = (
         form.fields["service"].queryset.filter(is_active=True)
     )
