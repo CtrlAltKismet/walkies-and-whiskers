@@ -1,6 +1,9 @@
+from datetime import datetime
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
 
 from .forms import PetForm
 from .models import Pet
@@ -124,6 +127,8 @@ def pet_delete(request, pet_id):
         owner=request.user,
     )
     
+    has_booking_history = pet.bookings.exist()
+    
     if request.method == "POST":
         pet_name = pet.name
         pet.delete()
@@ -137,6 +142,7 @@ def pet_delete(request, pet_id):
     
     context = {
         "pet": pet,
+        "has_booking_history": has_booking_history,
     }
     
     return render(
