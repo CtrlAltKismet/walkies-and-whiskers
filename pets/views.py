@@ -133,6 +133,31 @@ def pet_delete(request, pet_id):
         pet_name = pet.name
         
         if has_booking_history:
+            upcoming_bookings = pet.bookings.filter(
+                status__in=[
+                    "pending_payment",
+                    "confirmed",
+                ],
+            )
+            
+            for booking in upcoming_bookings:
+                booking_datetime = timezone.make_aware(
+                    datetime.combine(
+                        booking.booking_date,
+                        booking.booking_time,
+                    )
+                )
+                
+                if booking_datetime > timezone.now():
+                    booking.status = "cancelled"
+                    
+                    booking.save(
+                        update_fields=[
+                            "status",
+                            "updated_at",
+                        ]
+                    )
+            
             pet.is_active = False
             
             pet.save(
