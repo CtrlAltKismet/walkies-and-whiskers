@@ -38,7 +38,10 @@ def pet_create(request):
 def pet_list(request):
     """Display pet profiles belonging to the logged-in user."""
 
-    pets = Pet.objects.filter(owner=request.user)
+    pets = Pet.objects.filter(
+        owner=request.user,
+        is_active=True,
+    )
 
     context = {
         "pets": pets,
