@@ -619,3 +619,20 @@ form ul {
     margin: 0.5rem 0 0;
     padding-left: 1.2rem;
 }
+
+/* Django form errors */
+
+.errorlist {
+    margin: 0 0 0.65rem;
+    padding: 0.7rem 0.9rem;
+    border-left: 5px solid var(--colour-danger);
+    border-radius: var(--border-radius-small);
+    color: var(--colour-danger-dark);
+    font-weight: 700;
+    background: rgba(169, 72, 60, 0.09);
+    list-style: none;
+}
+
+.errorlist li {
+    margin: 0.15rem 0;
+}
