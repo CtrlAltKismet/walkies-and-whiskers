@@ -236,3 +236,48 @@ textarea:focus-visible {
     outline: 3px solid var(--colour-terracotta);
     outline-offset: 4px;
 }
+
+/* Standalone links behave like buttons */
+
+main p > a:only-child {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.86rem 1.2rem;
+    border: 2px solid var(--colour-forest);
+    border-radius: 999px;
+    color: var(--colour-white);
+    background: var(--colour-forest);
+    box-shadow: var(--shadow-small);
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    transition:
+        color 180ms ease,
+        background-color 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+main p > a:only-child:hover {
+    color: var(--colour-white);
+    border-color: var(--colour-terracotta-dark);
+    background: var(--colour-terracotta-dark);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+main p:last-child > a:only-child {
+    color: var(--colour-forest);
+    border-color: var(--colour-sage);
+    background: var(--colour-paper);
+}
+
+main p:last-child > a:only-child:hover {
+    color: var(--colour-white);
+    border-color: var(--colour-forest);
+    background: var(--colour-forest);
+}
