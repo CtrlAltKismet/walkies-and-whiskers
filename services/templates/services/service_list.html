@@ -63,6 +63,142 @@
                     {% endif %}
                 </p>
 
+                {% if service.name == "Dog Walking" %}
+                    <h3>What is included</h3>
+
+                    <ul>
+                        <li>
+                            A local walk tailored to your dog's pace,
+                            age and energy level.
+                        </li>
+                        <li>
+                            Fresh water provided after the walk where
+                            available.
+                        </li>
+                        <li>
+                            Basic cleaning of muddy paws before your
+                            dog returns home.
+                        </li>
+                        <li>
+                            Weather guidance provided during the
+                            booking process.
+                        </li>
+                    </ul>
+
+                    <h3>What is not included</h3>
+
+                    <ul>
+                        <li>
+                            Off lead walking unless this has been
+                            agreed in advance.
+                        </li>
+                        <li>
+                            Training sessions or behavioural
+                            rehabilitation.
+                        </li>
+                        <li>
+                            Transport outside the local service area.
+                        </li>
+                    </ul>
+
+                    <h3>Before the booking</h3>
+
+                    <p>
+                        Please make sure your dog's lead, harness and
+                        any required walking equipment are ready and
+                        easy to access.
+                    </p>
+
+                {% elif service.name == "Drop-In Visit" %}
+                    <h3>What is included</h3>
+
+                    <ul>
+                        <li>
+                            Feeding and refreshing drinking water.
+                        </li>
+                        <li>
+                            Toilet breaks or litter tray checks.
+                        </li>
+                        <li>
+                            Medication reminders where clear
+                            instructions are provided.
+                        </li>
+                        <li>
+                            Gentle play, company and a general
+                            wellbeing check.
+                        </li>
+                    </ul>
+
+                    <h3>What is not included</h3>
+
+                    <ul>
+                        <li>
+                            Overnight care.
+                        </li>
+                        <li>
+                            Deep cleaning of pet areas or the wider
+                            home.
+                        </li>
+                        <li>
+                            Veterinary treatment or emergency medical
+                            care.
+                        </li>
+                    </ul>
+
+                    <h3>Before the booking</h3>
+
+                    <p>
+                        Please leave food, medication and care
+                        instructions somewhere clear and easy to find.
+                    </p>
+
+                {% elif service.name == "Pet Sitting" %}
+                    <h3>What is included</h3>
+
+                    <ul>
+                        <li>
+                            Supervision and companionship in the pet's
+                            own home.
+                        </li>
+                        <li>
+                            Feeding, fresh water and routine toilet
+                            breaks.
+                        </li>
+                        <li>
+                            Play, rest and care based on the pet's
+                            usual routine.
+                        </li>
+                        <li>
+                            Basic updates for the owner during the
+                            booking.
+                        </li>
+                    </ul>
+
+                    <h3>What is not included</h3>
+
+                    <ul>
+                        <li>
+                            Overnight stays unless arranged as a
+                            separate service.
+                        </li>
+                        <li>
+                            Intensive medical care or veterinary
+                            procedures.
+                        </li>
+                        <li>
+                            Household cleaning unrelated to the pet.
+                        </li>
+                    </ul>
+
+                    <h3>Before the booking</h3>
+
+                    <p>
+                        Please provide clear feeding, medication,
+                        access and emergency contact instructions
+                        before the visit begins.
+                    </p>
+                {% endif %}
+
                 {% if user.is_authenticated %}
                     <p>
                         <a
@@ -85,29 +221,28 @@
         <p>No services are currently available.</p>
     {% endif %}
 
-<div
-    id="service-details-modal"
-    class="details-modal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="service-modal-title"
-    hidden
->
-    <div class="details-modal-inner">
-        <button
-            type="button"
-            class="details-modal-close"
-            aria-label="Close service details"
-        >
-            &times;
-        </button>
+    <div
+        id="service-details-modal"
+        class="details-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Service details"
+        hidden
+    >
+        <div class="details-modal-inner">
+            <button
+                type="button"
+                class="details-modal-close"
+                aria-label="Close service details"
+            >
+                &times;
+            </button>
 
-        <div id="service-modal-content">
-            <h2 id="service-modal-title">
-                Service details
-            </h2>
+            <div id="service-modal-content">
+                <h2>Service details</h2>
+            </div>
         </div>
     </div>
-</div>
-<script src="{% static 'js/service-modal.js' %}"></script>
+
+    <script src="{% static 'js/service-modal.js' %}"></script>
 {% endblock %}
