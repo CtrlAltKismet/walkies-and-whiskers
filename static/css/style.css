@@ -1120,3 +1120,16 @@ footer a:hover {
         width: 100%;
     }
 }
+
+/* Show the full hero image on desktop screens */
+
+@media (min-width: 801px) {
+    .scrapbook-image-wide {
+        height: auto;
+    }
+
+    .scrapbook-image-wide img {
+        height: auto;
+        object-fit: absolute;
+    }
+}
