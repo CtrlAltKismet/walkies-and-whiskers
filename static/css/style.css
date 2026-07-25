@@ -636,3 +636,64 @@ form ul {
 .errorlist li {
     margin: 0.15rem 0;
 }
+
+/* Django messages */
+
+.messages {
+    width: min(var(--page-width), calc(100% - 2rem));
+    margin: 1.5rem auto 0;
+    padding: 0;
+    list-style: none;
+}
+
+.messages li {
+    position: relative;
+    margin-bottom: 0.75rem;
+    padding: 1rem 1.25rem 1rem 3rem;
+    border: 1px solid rgba(82, 112, 80, 0.24);
+    border-left: 6px solid var(--colour-success);
+    border-radius: 8px 16px 10px 14px;
+    background: var(--colour-paper);
+    box-shadow: var(--shadow-small);
+}
+
+.messages li::before {
+    position: absolute;
+    top: 0.85rem;
+    left: 1rem;
+    content: "✓";
+    color: var(--colour-success);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.messages .error {
+    border-left-color: var(--colour-danger);
+}
+
+.messages .error::before {
+    content: "!";
+    color: var(--colour-danger);
+}
+
+.messages .warning {
+    border-left-color: var(--colour-warning);
+}
+
+.messages .warning {
+    border-left-color: var(--colour-warning);
+}
+
+.messages .warning::before {
+    content: "!";
+    color: var(--colour-warning);
+}
+
+.messages .info {
+    border-left-color: var(--colour-sage);
+}
+
+.messages .info::before {
+      content: "i";
+    color: var(--colour-moss);
+}
