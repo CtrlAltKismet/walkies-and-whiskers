@@ -730,3 +730,44 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
     background: rgba(201, 130, 99, 0.1);
 }
+
+/* Footer */
+
+footer {
+    position: relative;
+    margin-top: auto;
+    padding: 2.5rem 1rem 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    background: var(--colour-forest-dark);
+}
+
+footer::before {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    left: 0;
+    height: 12px;
+    content: "";
+    background:
+        linear-gradient(
+            135deg,
+            transparent 33%,
+            var(--colour-forest-dark) 34%,
+            var(--colour-dorest-dark) 66%,
+            transparent 67%
+        );
+    background-size: 22px 22px;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: var(--colour-paper-dark);
+}
+
+footer a:hover {
+    color: var(--colour-white);
+}
