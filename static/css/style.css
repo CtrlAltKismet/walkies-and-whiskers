@@ -606,3 +606,16 @@ input[type="submit"]:active {
     box-shadow: var(--shadow-small);
     transform: translateY(0);
 }
+
+/* Django help text */
+
+.helptext {
+    display: block;
+    margin-top: 0.35rem;
+}
+
+.helptext ul,
+form ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.2rem;
+}
