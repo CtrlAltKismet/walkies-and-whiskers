@@ -771,3 +771,111 @@ footer a {
 footer a:hover {
     color: var(--colour-white);
 }
+
+/* Responsive Design */
+
+@media (max-width: 760px) {
+    body {
+        font-size: 0.97rem;
+    }
+
+    main {
+        width: min(100% - 1rem, var(--page-width));
+        padding-top: 1.5rem;
+    }
+
+    main > section {
+        padding: 1.4rem;
+        border-radius: 20px 12px 18px 14px;
+    }
+
+    nav {
+        min-height: auto;
+        padding: 0.65rem 0;
+    }
+
+    nav ul {
+        gap: 0.15rem;
+    }
+
+    nav a,
+    nav button {
+        min-height: 2.35rem;
+        padding: 0.5rem 0.65rem;
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 12vw, 3rem);
+    }
+
+    h1::after {
+        right: -1.8rem;
+        font-size: 1rem;
+    }
+
+    article {
+        margin: 1.5rem 0;
+        padding: 1.25rem;
+        transform: none !important;
+    }
+
+    main form {
+        padding: 1.15rem;
+    }
+
+    main p > a:only-child,
+    button,
+    input[type="submit"] {
+        width: 100%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 430px) {
+    main {
+        width: calc(100% - 0.7rem);
+    }
+
+    main > section {
+        padding: 1.15rem;
+    }
+
+    main > section > section {
+        padding: 1rem;
+    }
+
+    nav a,
+    nav button {
+        font-size: 0.82rem;
+    }
+}
+
+/* Reduced Motion Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
+    article,
+    article:hover,
+    main p > a:only-child:hover,
+    button:hover,
+    input[type="submit"]:hover {
+        transform: none;
+    }
+}
