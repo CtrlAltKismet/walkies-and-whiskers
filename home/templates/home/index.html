@@ -1,16 +1,4 @@
 {% extends "base.html" %}
-
-{% block title %}
-    Home | Walkies & Whiskers
-{% endblock %}
-
-{% block content %}
-    <h1>Walkies & Whiskers</h1>
-
-    <p>
-        A pet-care booking platform for local pet owners.
-    </p>
-{% endblock %}{% extends "base.html" %}
 {% load static %}
 
 {% block title %}
@@ -65,20 +53,24 @@
             </div>
         </div>
 
-        <div class="home-photo-stack">
-            <figure class="scrapbook-image">
+        <div class="home-photo-collage">
+            <figure class="scrapbook-image scrapbook-image-wide">
                 <img
                     src="{% static 'images/home/hero-pets.jpg' %}"
                     alt="A happy dog enjoying time outdoors"
                 >
             </figure>
 
-            <figure class="scrapbook-image scrapbook-image-small">
+            <figure class="scrapbook-image scrapbook-image-overlap">
                 <img
                     src="{% static 'images/home/pet-care.jpg' %}"
-                    alt="A relaxed pet receiving attentive care"
+                    alt="A relaxed cat sleeping."
                 >
             </figure>
+
+            <p class="photo-note">
+                Happy pets, happy people
+            </p>
         </div>
     </div>
 

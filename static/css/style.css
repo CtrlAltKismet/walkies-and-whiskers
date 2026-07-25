@@ -875,3 +875,248 @@ footer a:hover {
         transform: none;
     }
 }
+
+/* Homepage */
+
+
+.home-page {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.home-hero {
+    display: grid;
+    gap: 2rem;
+}
+
+.home-hero-text {
+    max-width: 50rem;
+}
+
+.home-lead {
+    max-width: 46rem;
+    font-size: 1.15rem;
+}
+
+.handwritten-heading {
+    margin-bottom: 0.3rem;
+    color: var(--colour-terracotta-dark);
+    font-family: var(--font-handwritten);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.button-group {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.button-link {
+    display: inline-flex;
+    min-height: 2.9rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.3rem;
+    border: 2px solid var(--colour-forest);
+    border-radius: 999px;
+    color: var(--colour-white);
+    background: var(--colour-forest);
+    box-shadow: var(--shadow-small);
+    text-align: center;
+    text-decoration: none;
+    transition:
+        color 180ms ease,
+        background-color 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+.button-link:hover {
+    color: var(--colour-white);
+    border-color: var(--colour-terracotta-dark);
+    background: var(--colour-terracotta-dark);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.button-link-secondary {
+    color: var(--colour-forest);
+    background: var(--colour-paper);
+}
+
+.button-link-secondary:hover {
+    color: var(--colour-white);
+    border-color: var(--colour-forest);
+    background: var(--colour-forest);
+}
+
+/* Homepage photograph collage */
+
+.home-photo-collage {
+    position: relative;
+    min-height: 29rem;
+    margin-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+.scrapbook-image {
+    margin: 0;
+    padding: 0.7rem 0.7rem 2rem;
+    border: var(--border-paper);
+    background: var(--colour-paper);
+    box-shadow: var(--shadow-large);
+}
+
+.scrapbook-image::before {
+    position: absolute;
+    z-index: 2;
+    top: -0.7rem;
+    left: 50%;
+    width: 5.5rem;
+    height: 1.4rem;
+    content: "";
+    background: rgba(201, 130, 99, 0.5);
+    box-shadow: 0 2px 4px rgba(114, 91, 73, 0.14);
+    transform: translateX(-50%) rotate(-3deg);
+}
+
+.scrapbook-image img {
+    width: 100%;
+    border-radius: 3px;
+    object-fit: cover;
+}
+
+.scrapbook-image-wide {
+    position: relative;
+    width: 82%;
+    height: 23rem;
+    transform: rotate(-1deg);
+}
+
+.scrapbook-image-wide img {
+    height: 100%;
+}
+
+.scrapbook-image-overlap {
+    position: absolute;
+    right: 1rem;
+    bottom: 0;
+    width: 30%;
+    min-width: 13rem;
+    height: 15rem;
+    transform: rotate(5deg);
+}
+
+.scrapbook-image-overlap::before {
+    background: rgba(168, 184, 154, 0.68);
+    transform: translateX(-50%) rotate(4deg);
+}
+
+.scrapbook-image-overlap img {
+    height: 100%;
+}
+
+.photo-note {
+    position: absolute;
+    z-index: 4;
+    right: 25%;
+    bottom: 0.75rem;
+    margin: 0;
+    padding: 0.3rem 0.8rem;
+    color: var(--colour-brown);
+    font-family: var(--font-handwritten);
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: rgba(255, 250, 241, 0.9);
+    transform: rotate(-3deg);
+}
+
+/* Homepage cards */
+
+.home-card-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.home-card-grid article {
+    height: 100%;
+    margin: 0;
+}
+
+.home-final-action {
+    margin-top: 1.75rem;
+    text-align: center;
+}
+
+/* Homepage responsive layout */
+
+@media (max-width: 800px) {
+    .home-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-photo-collage {
+        min-height: 25rem;
+        padding-bottom: 4rem;
+    }
+
+    .scrapbook-image-wide {
+        width: 94%;
+        height: 19rem;
+    }
+
+    .scrapbook-image-overlap {
+        right: 0;
+        width: 42%;
+        min-width: 11rem;
+        height: 12rem;
+    }
+
+    .photo-note {
+        right: auto;
+        bottom: 0.5rem;
+        left: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .home-page {
+        gap: 1.75rem;
+    }
+
+    .home-photo-collage {
+        min-height: 24rem;
+        padding-bottom: 1rem;
+    }
+
+    .scrapbook-image-wide {
+        width: 100%;
+        height: 17rem;
+        transform: rotate(-0.5deg);
+    }
+
+    .scrapbook-image-overlap {
+        right: 0.5rem;
+        bottom: 1rem;
+        width: 50%;
+        min-width: 0;
+        height: 10rem;
+    }
+
+    .photo-note {
+        bottom: 0.4rem;
+        left: 0;
+        font-size: 1.2rem;
+    }
+
+    .button-group,
+    .button-link {
+        width: 100%;
+    }
+}
