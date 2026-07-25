@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     My Pets | Walkies & Whiskers
@@ -23,9 +24,13 @@
             <h2>Your pet profiles</h2>
 
             {% for pet in pets %}
-                <article>
+                <article class="pet-card">
                     <h3>
-                        <a href="{% url 'pet_detail' pet.id %}">
+                        <a
+                            href="{% url 'pet_detail' pet.id %}"
+                            class="pet-details-link"
+                            data-pet-template="pet-details-{{ pet.id }}"
+                        >
                             {{ pet.name }}
                         </a>
                     </h3>
@@ -47,6 +52,81 @@
                         {{ pet.get_size_display }}
                     </p>
                 </article>
+
+                <template id="pet-details-{{ pet.id }}">
+                    <h2>{{ pet.name }}</h2>
+
+                    <p>
+                        <strong>Species:</strong>
+                        {{ pet.species }}
+                    </p>
+
+                    <p>
+                        <strong>Breed:</strong>
+
+                        {% if pet.breed %}
+                            {{ pet.breed }}
+                        {% else %}
+                            Not provided
+                        {% endif %}
+                    </p>
+
+                    <p>
+                        <strong>Age:</strong>
+
+                        {% if pet.age %}
+                            {{ pet.age }}
+                        {% else %}
+                            Not provided
+                        {% endif %}
+                    </p>
+
+                    <p>
+                        <strong>Size:</strong>
+                        {{ pet.get_size_display }}
+                    </p>
+
+                    <p>
+                        <strong>Temperament:</strong>
+                        {{ pet.temperament }}
+                    </p>
+
+                    <p>
+                        <strong>Medical notes:</strong>
+
+                        {% if pet.medical_notes %}
+                            {{ pet.medical_notes }}
+                        {% else %}
+                            No medical notes provided.
+                        {% endif %}
+                    </p>
+
+                    <p>
+                        <strong>Feeding notes:</strong>
+
+                        {% if pet.feeding_notes %}
+                            {{ pet.feeding_notes }}
+                        {% else %}
+                            No feeding notes provided.
+                        {% endif %}
+                    </p>
+
+                    <div class="button-group">
+                        <a
+                            href="{% url 'pet_update' pet.id %}"
+                            class="button-link"
+                        >
+                            Edit pet
+                        </a>
+
+                        <a
+                            href="{% url 'pet_delete' pet.id %}"
+                            class="button-link button-link-secondary"
+                        >
+                            Delete pet
+                        </a>
+                    </div>
+                </template>
             {% endfor %}
         </section>
     {% else %}
@@ -70,4 +150,29 @@
         </section>
     {% endif %}
 </section>
+
+<div
+    id="pet-details-modal"
+    class="details-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Pet details"
+    hidden
+>
+    <div class="details-modal-inner">
+        <button
+            type="button"
+            class="details-modal-close pet-modal-close"
+            aria-label="Close pet details"
+        >
+            &times;
+        </button>
+
+        <div id="pet-modal-content">
+            <h2>Pet details</h2>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/pet-modal.js' %}"></script>
 {% endblock %}
