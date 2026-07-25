@@ -22,21 +22,29 @@ def booking_create(request):
     form.fields["pet"].queryset = request.user.pets.filter(
         is_active=True,
     )
-    form.fields["service"].queryset = (
-        form.fields["service"].queryset.filter(is_active=True)
+
+    active_services = form.fields["service"].queryset.filter(
+        is_active=True,
     )
+
+    form.fields["service"].queryset = active_services
+
+    service_prices = {
+        str(service.id): str(service.price)
+        for service in active_services
+    }
 
     if request.method == "POST" and form.is_valid():
         booking = form.save(commit=False)
         booking.user = request.user
         booking.status = booking.STATUS_PENDING
         booking.total_price = booking.service.price
-        
+
         if booking.service.is_outdoor_service:
             booking.weather_summary = get_weather_guidance(
                 booking.booking_date,
             )
-        
+
         booking.save()
 
         messages.success(
@@ -48,6 +56,7 @@ def booking_create(request):
 
     context = {
         "form": form,
+        "service_prices": service_prices,
     }
 
     return render(
