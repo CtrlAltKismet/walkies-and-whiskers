@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Services | Walkies & Whiskers
@@ -83,4 +84,27 @@
     {% else %}
         <p>No services are currently available.</p>
     {% endif %}
+
+<dialogue
+    id="service-details-modal"
+    class="details-modal"
+    aria-labelledby="service-modal-title"
+>
+    <div class="details-modal-inner">
+        <button
+            type="button"
+            class="details-modal-close"
+            aria-label="Close service details"
+        >
+            &times;
+        </button>
+
+        <div id="service-modal-content">
+            <h2 id="service-modal-title">
+                Service Details
+            </h2>
+        </div>
+    </div>
+</dialogue>
+<script src="{% static 'js/service-modal.js' %}"></script>
 {% endblock %}
