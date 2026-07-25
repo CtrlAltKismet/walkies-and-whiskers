@@ -85,10 +85,13 @@
         <p>No services are currently available.</p>
     {% endif %}
 
-<dialogue
+<div
     id="service-details-modal"
     class="details-modal"
+    role="dialog"
+    aria-modal="true"
     aria-labelledby="service-modal-title"
+    hidden
 >
     <div class="details-modal-inner">
         <button
@@ -101,10 +104,10 @@
 
         <div id="service-modal-content">
             <h2 id="service-modal-title">
-                Service Details
+                Service details
             </h2>
         </div>
     </div>
-</dialogue>
+</div>
 <script src="{% static 'js/service-modal.js' %}"></script>
 {% endblock %}
