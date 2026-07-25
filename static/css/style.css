@@ -209,3 +209,30 @@ small,
     color: var(--colour-muted);
     font-size: 0.88rem;
 }
+
+/* Links */
+
+a {
+    color: var(--colour-forest);
+    font-weight: 700;
+    text-decoration-color: rgba(52, 72, 58, 0.35);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+    transition:
+        color 180ms ease,
+        text-decoration-color 180ms ease;
+}
+
+a:hover {
+    color: var(--colour-terracotta-dark);
+    text-decoration-color: currentColor;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--colour-terracotta);
+    outline-offset: 4px;
+}
