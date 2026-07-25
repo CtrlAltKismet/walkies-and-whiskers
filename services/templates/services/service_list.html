@@ -9,9 +9,13 @@
 
     {% if services %}
         {% for service in services %}
-            <article>
+            <article class="service-card">
                 <h2>
-                    <a href="{{ service.get_absolute_url }}">
+                    <a
+                        href="{{ service.get_absolute_url }}"
+                        class="service-details-link"
+                        data-service-template="service-details-{{ service.id }}"
+                    >
                         {{ service.name }}
                     </a>
                 </h2>
@@ -32,6 +36,49 @@
                     <p>Indoor service</p>
                 {% endif %}
             </article>
+
+            <template id="service-details-{{ service.id }}">
+                <h2>{{ service.name }}</h2>
+
+                <p>{{ service.description }}</p>
+
+                <p>
+                    <strong>Duration:</strong>
+                    {{ service.duration_minutes }} minutes
+                </p>
+
+                <p>
+                    <strong>Price:</strong>
+                    £{{ service.price }}
+                </p>
+
+                <p>
+                    <strong>Service type:</strong>
+
+                    {% if service.is_outdoor_service %}
+                        Outdoor service
+                    {% else %}
+                        Indoor service
+                    {% endif %}
+                </p>
+
+                {% if user.is_authenticated %}
+                    <p>
+                        <a
+                            href="{% url 'booking_create' %}"
+                            class="button-link"
+                        >
+                            Book this service
+                        </a>
+                    </p>
+                {% else %}
+                    <p>
+                        <a href="{% url 'login' %}">
+                            Log in to make a booking
+                        </a>
+                    </p>
+                {% endif %}
+            </template>
         {% endfor %}
     {% else %}
         <p>No services are currently available.</p>
