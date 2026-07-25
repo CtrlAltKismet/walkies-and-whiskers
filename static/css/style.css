@@ -444,3 +444,55 @@ main > section > section:nth-of-type(even) {
     border-left-color: var(--colour-terracotta);
     background: rgba(238, 226, 208, 0.42);
 }
+
+/* Scrapbook Cards */
+
+article {
+    position: relative;
+    margin: 1.75rem 0;
+    padding: 1.5rem;
+    border: var(--border-paper);
+    border-radius: 8px 18px 10px 15px;
+    background: var(--colour-paper);
+    box-shadow: var(--shadow-medium);
+    transition:
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+article::before {
+    position: absolute;
+    top: -0.7rem;
+    left: 50%;
+    width: 5.5rem;
+    height: 1.45rem;
+    content: "";
+    background: rgba(102, 130, 99, 0.44);
+    box-shadow: 0 2px 4px rgba(114, 911, 73, 0.12);
+    transform: translateX(-50%) rotate(-2deg);
+}
+
+article:nth-of-type(3n + 1) {
+    transform: rotate(-0.25deg);
+}
+
+article:nth-of-type(3n + 2) {
+    transform: rotat(0.3deg);
+}
+
+article:nth-of-type(3n + 3) {
+    transform: rotate(-0.12deg);
+}
+
+article:hover {
+    box-shadow: var(--shadow-large);
+    transform: translateY(-4px) rotate(0);
+}
+
+article h3 a {
+    text-decoration: none;
+}
+
+article p:last-child {
+    margin-bottom: 0;
+}
