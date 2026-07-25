@@ -426,3 +426,21 @@ main > section::after {
     border-radius: 45% 55% 63% 37%;
     transform: rotate(18deg);
 }
+
+/* Nested page sections */
+
+main > section > section {
+    position: relative;
+    margin-top: 2rem;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border: 1px solid rgba(100, 118, 93, 0.2);
+    border-left: 6px solid var(--colour-sage);
+    border-radius: 10px 22px 14px 20px;
+    background: rgba(248, 242, 231, 0.62);
+    box-shadow: var(--shadow-small);
+}
+
+main > section > section:nth-of-type(even) {
+    border-left-color: var(--colour-terracotta);
+    background: rgba(238, 226, 208, 0.42);
+}
