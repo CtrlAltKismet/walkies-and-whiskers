@@ -32,8 +32,17 @@
 <body>
     <header>
         <nav>
-            <a href="{% url 'home' %}">
-                Walkies & Whiskers
+            <a
+                href="{% url 'home' %}"
+                class="site-logo"
+            >
+                <img
+                    src="{% static 'images/logo-paw.png' %}"
+                    alt="paw print"
+                    class="site-logo-image"
+                >
+
+                <span>Walkies & Whiskers</span>
             </a>
 
             <ul>

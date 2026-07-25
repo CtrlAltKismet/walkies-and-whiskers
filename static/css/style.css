@@ -1208,3 +1208,26 @@ footer a:hover {
 .modal-open {
     overflow: hidden;
 }
+
+/* Website Logo */
+
+.site-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.site-logo-image {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.site-logo span {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
