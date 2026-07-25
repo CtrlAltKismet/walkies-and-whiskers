@@ -281,3 +281,99 @@ main p:last-child > a:only-child:hover {
     border-color: var(--colour-forest);
     background: var(--colour-forest);
 }
+
+/* Header and navigation */
+
+header {
+    position: sticky;
+    z-index: 100;
+    top: 0;
+    border-bottom: 1px solid rgba(114, 91, 73, 0.18);
+    background: rgba(255, 250, 241, 0.93);
+    box-shadow: 0 4px 18px rgba(52, 72, 58, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+header::after {
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    left: 0;
+    height: 5px;
+    content: "";
+    background:
+        repeating-linear-gradient(
+            90deg,
+            var(--colour-sage) 0,
+            var(--colour-sage) 20px,
+            var(--colour-terracotta) 20px,
+            var(--colour-terracotta) 31px,
+            transparent 31px,
+            transparent 42px
+        );
+    opacity: 0.45;
+}
+
+nav {
+    width: min(var(--page-width), calc(100% - 2rem));
+    min-height: 5rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.85rem 0;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    list-style: none;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a,
+nav button {
+    display: inline-flex;
+    min-height: 2.55rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 0.9rem;
+    border: 0;
+    border-radius: 999px;
+    color: var(--colour-forest);
+    font: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    transition:
+        color 180ms ease,
+        background-color 180ms ease,
+        transform 180ms ease;
+}
+
+nav a:hover,
+nav button:hover {
+    color: var(--colour-white);
+    background: var(--colour-forest);
+    transform: translateY(-1px);
+}
+
+nav form {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
