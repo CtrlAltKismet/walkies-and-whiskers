@@ -73,8 +73,8 @@ def booking_list(request):
     bookings = Booking.objects.filter(
         user=request.user,
     ).order_by(
-        "booking_date",
-        "booking_time",
+        "-booking_date",
+        "-booking_time",
     )
     
     for booking in bookings:
