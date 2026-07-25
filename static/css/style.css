@@ -1153,3 +1153,58 @@ footer a:hover {
 #service-price-display strong {
     color: var(--colour-forest);
 }
+
+/* Service and pet detail modal */
+
+.details-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: rgba(36, 51, 41, 0.72);
+}
+
+.details-modal[hidden] {
+    display: none;
+}
+
+.details-modal-inner {
+    position: relative;
+    width: min(100%, 38rem);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 2rem;
+    background-color: var(--colour-paper);
+    border: 0.2rem solid var(--colour-sage);
+    border-radius: 0.75rem;
+    box-shadow: 0 1rem 3rem rgba(36, 51, 41, 0.3);
+    transform: rotate(-0.5deg);
+}
+
+.details-modal-close {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.8rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--colour-terracotta);
+    color: var(--colour-paper);
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.details-modal-close:hover,
+.details-modal-close:focus {
+    background-color: var(--colour-terracotta-dark);
+}
+
+.modal-open {
+    overflow: hidden;
+}
