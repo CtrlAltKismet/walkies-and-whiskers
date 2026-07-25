@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Create Booking | Walkies & Whiskers
@@ -20,6 +21,17 @@
         {% csrf_token %}
 
         {{ form.as_p }}
+
+        <div
+            id="service-price-display"
+            aria-live="polite"
+        >
+            <p>
+                Select a service to view its price.
+            </p>
+        </div>
+
+        {{ service_prices|json_script:"service-prices" }}
 
         <button type="submit">
             Create booking
