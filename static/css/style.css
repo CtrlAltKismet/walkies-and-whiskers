@@ -377,3 +377,52 @@ nav form {
     background: transparent;
     box-shadow: none;
 }
+
+/* Main paper container */
+
+main > section {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(1.5rem, 5vw, 3.5rem);
+    overflow: hidden;
+    border: var(--border-paper);
+    border-radius: 30px 18px 28px 20px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.85),
+            rgba(255, 250, 241, 0.95)
+        );
+    box-shadow: var(--shadow-large);
+}
+
+main > section::before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 12px;
+    content: "";
+    background:
+        repeating-linear-gradient(
+            135deg,
+            transparent 0,
+            transparent 9px,
+            rgba(168, 184, 154, 0.32) 9px,
+            rgba(168, 184, 154, 0.32) 16px
+        );
+}
+
+main > section::after {
+    position: absolute;
+    z-index: -1;
+    top: -4rem;
+    right: -3rem;
+    width: 11rem;
+    height: 11rem;
+    content: "";
+    border: 2px dashed rgba(201, 130, 99, 0.28);
+    border-radius: 45% 55% 63% 37%;
+    transform: rotate(18deg);
+}
