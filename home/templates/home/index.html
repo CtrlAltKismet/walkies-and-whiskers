@@ -10,4 +10,175 @@
     <p>
         A pet-care booking platform for local pet owners.
     </p>
+{% endblock %}{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Home | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+<section class="home-page">
+
+    <div class="home-hero">
+        <div class="home-hero-text">
+            <p class="handwritten-heading">
+                Welcome to Walkies & Whiskers
+            </p>
+
+            <h1>Pet care made personal</h1>
+
+            <p class="home-lead">
+                Walkies & Whiskers helps local pet owners arrange reliable
+                care without complicated forms, scattered notes or endless
+                phone calls.
+            </p>
+
+            <p>
+                Create profiles for your pets, explore the services available
+                and manage your bookings from one simple account.
+            </p>
+
+            <div class="button-group">
+                <a
+                    class="button-link"
+                    href="{% url 'service_list' %}"
+                >
+                    View our services
+                </a>
+
+                {% if user.is_authenticated %}
+                    <a
+                        class="button-link button-link-secondary"
+                        href="{% url 'booking_create' %}"
+                    >
+                        Make a booking
+                    </a>
+                {% else %}
+                    <a
+                        class="button-link button-link-secondary"
+                        href="{% url 'register' %}"
+                    >
+                        Create an account
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="home-photo-stack">
+            <figure class="scrapbook-image">
+                <img
+                    src="{% static 'images/home/hero-pets.jpg' %}"
+                    alt="A happy dog enjoying time outdoors"
+                >
+            </figure>
+
+            <figure class="scrapbook-image scrapbook-image-small">
+                <img
+                    src="{% static 'images/home/pet-care.jpg' %}"
+                    alt="A relaxed pet receiving attentive care"
+                >
+            </figure>
+        </div>
+    </div>
+
+    <section>
+        <p class="handwritten-heading">
+            Everything in one place
+        </p>
+
+        <h2>Thoughtful care without the paperwork pile</h2>
+
+        <p>
+            Every pet has their own personality, routine and care needs.
+            Registered users can create a profile containing information such
+            as temperament, feeding instructions and medical notes.
+        </p>
+
+        <div class="home-card-grid">
+            <article>
+                <h3>Pet profiles</h3>
+
+                <p>
+                    Keep important care information organised and connected
+                    securely to your account.
+                </p>
+            </article>
+
+            <article>
+                <h3>Simple bookings</h3>
+
+                <p>
+                    Choose a service, date and time before reviewing the full
+                    booking details.
+                </p>
+            </article>
+
+            <article>
+                <h3>Secure confirmation</h3>
+
+                <p>
+                    Complete payment through Stripe and receive confirmation
+                    when your booking has been arranged.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="home-steps-section">
+        <p class="handwritten-heading">
+            Ready in a few simple steps
+        </p>
+
+        <h2>How it works</h2>
+
+        <div class="home-card-grid">
+            <article>
+                <h3>1. Create an account</h3>
+
+                <p>
+                    Register so that your pets and bookings remain connected
+                    to you.
+                </p>
+            </article>
+
+            <article>
+                <h3>2. Add your pet</h3>
+
+                <p>
+                    Create a profile with the information needed to provide
+                    suitable care.
+                </p>
+            </article>
+
+            <article>
+                <h3>3. Make a booking</h3>
+
+                <p>
+                    Select a service, complete payment and receive your
+                    booking confirmation.
+                </p>
+            </article>
+        </div>
+
+        <div class="home-final-action">
+            {% if user.is_authenticated %}
+                <a
+                    class="button-link"
+                    href="{% url 'dashboard' %}"
+                >
+                    Visit my dashboard
+                </a>
+            {% else %}
+                <a
+                    class="button-link"
+                    href="{% url 'register' %}"
+                >
+                    Get started
+                </a>
+            {% endif %}
+        </div>
+    </section>
+
+</section>
 {% endblock %}
