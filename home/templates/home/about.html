@@ -1,25 +1,294 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     About | Walkies & Whiskers
 {% endblock %}
 
 {% block content %}
-    <h1>About Walkies & Whiskers</h1>
+<section class="about-page">
 
-    <p>
-        Walkies & Whiskers is a local pet-care business
-        offering reliable services for pet owners who need extra
-        support caring for their animals.
-    </p>
+    <section class="about-intro">
+        <div class="about-intro-text">
+            <p class="handwritten-heading">
+                A little about us
+            </p>
 
-    <p>
-        Users will be able to browse available services, create pet
-        profiles, make bookings and securely pay online.
-    </p>
+            <h1>About Walkies & Whiskers</h1>
 
-    <p>
-        Our goal is to make arranging pet care simple, clear and
-        convenient.
-    </p>
+            <p class="about-lead">
+                Walkies & Whiskers is a local pet care business created to
+                make arranging reliable care feel simpler, warmer and more
+                personal.
+            </p>
+
+            <p>
+                We understand that pets are not simply another item on a
+                household schedule. They each have their own personality,
+                routine, preferences and care needs.
+            </p>
+
+            <p>
+                Our website gives local pet owners one straightforward place
+                to browse services, create detailed pet profiles, arrange
+                bookings and complete secure online payments.
+            </p>
+        </div>
+
+        <figure class="about-image-card">
+            <img
+                src="{% static 'images/about/about-pets.jpg' %}"
+                alt="A dog and cat relaxing comfortably together"
+            >
+
+            <figcaption>
+                Care for every paw and personality
+            </figcaption>
+        </figure>
+    </section>
+
+    <section class="about-founder">
+        <figure class="about-image-card about-founder-image">
+            <img
+                src="{% static 'images/about/claire-rossa.jpg' %}"
+                alt="Claire Rossa, founder of Walkies & Whiskers"
+            >
+
+            <figcaption>
+                Claire Rossa, founder
+            </figcaption>
+        </figure>
+
+        <div class="about-founder-text">
+            <p class="handwritten-heading">
+                Where it began
+            </p>
+
+            <h2>Meet our founder</h2>
+
+            <p>
+                Walkies & Whiskers was founded by Claire Rossa, a lifelong
+                animal lover who wanted to make dependable pet care easier
+                for busy owners to arrange.
+            </p>
+
+            <p>
+                Claire recognised that organising pet care could quickly
+                become a tangle of phone calls, handwritten notes and missing
+                information. She wanted to create a service where an owner's
+                instructions remained clear and every pet could be treated as
+                an individual.
+            </p>
+
+            <p>
+                Her aim was simple: to create a friendly local business that
+                owners could trust and a booking experience that did not add
+                more stress to an already busy day.
+            </p>
+        </div>
+    </section>
+
+    <section class="about-values">
+        <div class="about-section-heading">
+            <p class="handwritten-heading">
+                What matters to us
+            </p>
+
+            <h2>Care shaped around real pets</h2>
+
+            <p>
+                Everything we do is guided by three simple values.
+            </p>
+        </div>
+
+        <div class="about-values-grid">
+            <article>
+                <h3>Personal care</h3>
+
+                <p>
+                    Every pet is different. Profiles help owners record useful
+                    information about temperament, feeding, medical needs and
+                    everyday routines.
+                </p>
+            </article>
+
+            <article>
+                <h3>Clear communication</h3>
+
+                <p>
+                    Booking details, prices and confirmation messages are kept
+                    clear so that owners always understand what has been
+                    arranged.
+                </p>
+            </article>
+
+            <article>
+                <h3>Reliable support</h3>
+
+                <p>
+                    Our services are designed to provide dependable help when
+                    work, appointments, travel or everyday life make pet care
+                    more difficult to manage alone.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="about-contact">
+        <div class="about-contact-details">
+            <p class="handwritten-heading">
+                Get in touch
+            </p>
+
+            <h2>Contact Walkies & Whiskers</h2>
+
+            <p>
+                Have a question about our services or an existing booking?
+                Contact us using the details below.
+            </p>
+
+            <address>
+                <p>
+                    <strong>Email:</strong>
+                    <a href="mailto:hello@walkiesandwhiskers.com">
+                        hello@walkiesandwhiskers.com
+                    </a>
+                </p>
+
+                <p>
+                    <strong>Telephone:</strong>
+                    <a href="tel:+441632960321">
+                        01632 960 321
+                    </a>
+                </p>
+
+                <p>
+                    <strong>Service area:</strong>
+                    Coventry and surrounding areas
+                </p>
+            </address>
+
+            <div class="about-opening-hours">
+                <h3>Opening hours</h3>
+
+                <p>Monday to Friday: 8:00am to 6:00pm</p>
+                <p>Saturday: 9:00am to 4:00pm</p>
+                <p>Sunday: Closed</p>
+            </div>
+        </div>
+
+        <div class="about-socials">
+            <p class="handwritten-heading">
+                Follow our adventures
+            </p>
+
+            <h2>Find us online</h2>
+
+            <p>
+                Follow Walkies & Whiskers for pet care updates, photographs
+                and news from the business.
+            </p>
+
+            <ul class="social-links">
+                <li>
+                    <a
+                        class="social-link"
+                        href="https://www.facebook.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i
+                            class="fa-brands fa-facebook-f"
+                            aria-hidden="true"
+                        ></i>
+                        <span>Facebook</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        class="social-link"
+                        href="https://www.instagram.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i
+                            class="fa-brands fa-instagram"
+                            aria-hidden="true"
+                        ></i>
+                        <span>Instagram</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        class="social-link"
+                        href="https://x.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i
+                            class="fa-brands fa-x-twitter"
+                            aria-hidden="true"
+                        ></i>
+                        <span>X</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        class="social-link"
+                        href="https://www.tiktok.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i
+                            class="fa-brands fa-tiktok"
+                            aria-hidden="true"
+                        ></i>
+                        <span>TikTok</span>
+                    </a>
+                </li>
+            </ul>
+
+            <p class="about-social-note">
+                Social media links open in a new browser tab.
+            </p>
+        </div>
+    </section>
+
+    <section class="about-final-action">
+        <div>
+            <p class="handwritten-heading">
+                Ready to get started?
+            </p>
+
+            <h2>Find the right care for your pet</h2>
+
+            <p>
+                Explore the services currently available or create an account
+                to begin adding your pet's care information.
+            </p>
+        </div>
+
+        <div class="button-group">
+            <a
+                class="button-link"
+                href="{% url 'service_list' %}"
+            >
+                View our services
+            </a>
+
+            {% if not user.is_authenticated %}
+                <a
+                    class="button-link button-link-secondary"
+                    href="{% url 'register' %}"
+                >
+                    Create an account
+                </a>
+            {% endif %}
+        </div>
+    </section>
+
+</section>
 {% endblock %}
