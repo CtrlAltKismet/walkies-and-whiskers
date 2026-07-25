@@ -5,26 +5,181 @@
 {% endblock %}
 
 {% block content %}
+<section>
     <h1>{{ service.name }}</h1>
 
     <p>{{ service.description }}</p>
 
     <p>
-        Duration: {{ service.duration_minutes }} minutes
+        <strong>Duration:</strong>
+        {{ service.duration_minutes }} minutes
     </p>
 
     <p>
-        Price: £{{ service.price }}
+        <strong>Price:</strong>
+        £{{ service.price }}
     </p>
 
-    {% if service.is_outdoor_service %}
+    <p>
+        <strong>Service type:</strong>
+
+        {% if service.is_outdoor_service %}
+            Outdoor service
+        {% else %}
+            Indoor service
+        {% endif %}
+    </p>
+
+    {% if service.name == "Dog Walking" %}
+        <h2>What is included</h2>
+
+        <ul>
+            <li>
+                A local walk tailored to your dog's pace,
+                age and energy level.
+            </li>
+            <li>
+                Fresh water provided after the walk where
+                available.
+            </li>
+            <li>
+                Basic cleaning of muddy paws before your
+                dog returns home.
+            </li>
+            <li>
+                Weather guidance provided during the
+                booking process.
+            </li>
+        </ul>
+
+        <h2>What is not included</h2>
+
+        <ul>
+            <li>
+                Off lead walking unless this has been
+                agreed in advance.
+            </li>
+            <li>
+                Training sessions or behavioural
+                rehabilitation.
+            </li>
+            <li>
+                Transport outside the local service area.
+            </li>
+        </ul>
+
+        <h2>Before the booking</h2>
+
         <p>
-            This is an outdoor service. Weather guidance will be
-            provided during the booking process.
+            Please make sure your dog's lead, harness and
+            any required walking equipment are ready and
+            easy to access.
+        </p>
+
+    {% elif service.name == "Drop-In Visit" %}
+        <h2>What is included</h2>
+
+        <ul>
+            <li>
+                Feeding and refreshing drinking water.
+            </li>
+            <li>
+                Toilet breaks or litter tray checks.
+            </li>
+            <li>
+                Medication reminders where clear
+                instructions are provided.
+            </li>
+            <li>
+                Gentle play, company and a general
+                wellbeing check.
+            </li>
+        </ul>
+
+        <h2>What is not included</h2>
+
+        <ul>
+            <li>
+                Overnight care.
+            </li>
+            <li>
+                Deep cleaning of pet areas or the wider
+                home.
+            </li>
+            <li>
+                Veterinary treatment or emergency medical
+                care.
+            </li>
+        </ul>
+
+        <h2>Before the booking</h2>
+
+        <p>
+            Please leave food, medication and care
+            instructions somewhere clear and easy to find.
+        </p>
+
+    {% elif service.name == "Pet Sitting" %}
+        <h2>What is included</h2>
+
+        <ul>
+            <li>
+                Supervision and companionship in the pet's
+                own home.
+            </li>
+            <li>
+                Feeding, fresh water and routine toilet
+                breaks.
+            </li>
+            <li>
+                Play, rest and care based on the pet's
+                usual routine.
+            </li>
+            <li>
+                Basic updates for the owner during the
+                booking.
+            </li>
+        </ul>
+
+        <h2>What is not included</h2>
+
+        <ul>
+            <li>
+                Overnight stays unless arranged as a
+                separate service.
+            </li>
+            <li>
+                Intensive medical care or veterinary
+                procedures.
+            </li>
+            <li>
+                Household cleaning unrelated to the pet.
+            </li>
+        </ul>
+
+        <h2>Before the booking</h2>
+
+        <p>
+            Please provide clear feeding, medication,
+            access and emergency contact instructions
+            before the visit begins.
+        </p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <p>
+            <a
+                href="{% url 'booking_create' %}"
+                class="button-link"
+            >
+                Book this service
+            </a>
         </p>
     {% else %}
         <p>
-            This is an indoor service.
+            <a href="{% url 'login' %}">
+                Log in to make a booking
+            </a>
         </p>
     {% endif %}
 
@@ -33,4 +188,5 @@
             Back to services
         </a>
     </p>
+</section>
 {% endblock %}
