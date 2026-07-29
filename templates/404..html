@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Page Not Found | Walkies & Whiskers
+{% endblock %}
+
+{% block content %}
+<section class="error-page">
+    <p class="handwritten-heading">
+        This trail has gone cold...
+    </p>
+
+    <h1>404: Page not found</h1>
+
+    <p>
+        We could not find the page you were looking for.
+        It may have been moved, deleted, or the address may have
+        been entered incorrectly.
+    </p>
+
+    <p>
+        Let us guide you back somewhere familiar.
+    </p>
+
+    <div class="button-group">
+        <a class="button-link" href="{% url 'home' %}">
+            Return home
+        </a>
+
+        <a
+            class="button-link button-link-secondary"
+            href="{% url 'service_list' %}"
+        >
+            View our services
+        </a>
+    </div>
+</section>
+{% endblock %}
