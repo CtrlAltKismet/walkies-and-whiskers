@@ -1,0 +1,47 @@
+[
+{
+  "model": "services.service",
+  "pk": 1,
+  "fields": {
+    "name": "Dog Walking",
+    "slug": "dog-walking",
+    "description": "A local walk tailored to your dog's pace and needs.",
+    "price": "15.00",
+    "duration_minutes": 60,
+    "is_outdoor_service": true,
+    "is_active": true,
+    "created_at": "2026-07-21T12:17:35.002Z",
+    "updated_at": "2026-07-22T17:05:00.723Z"
+  }
+},
+{
+  "model": "services.service",
+  "pk": 2,
+  "fields": {
+    "name": "Pet Sitting",
+    "slug": "pet-sitting",
+    "description": "In-home care and companionship while you are away.",
+    "price": "25.00",
+    "duration_minutes": 120,
+    "is_outdoor_service": false,
+    "is_active": true,
+    "created_at": "2026-07-21T12:18:01.943Z",
+    "updated_at": "2026-07-21T12:18:01.943Z"
+  }
+},
+{
+  "model": "services.service",
+  "pk": 3,
+  "fields": {
+    "name": "Drop-In Visit",
+    "slug": "drop-in-visit",
+    "description": "A short home visit for feeding, medication or companionship.",
+    "price": "12.00",
+    "duration_minutes": 30,
+    "is_outdoor_service": false,
+    "is_active": true,
+    "created_at": "2026-07-21T12:18:28.549Z",
+    "updated_at": "2026-07-21T12:18:28.549Z"
+  }
+}
+]
