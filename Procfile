@@ -1,0 +1,1 @@
+web: gunicorn walkies_and_whiskers.wsgi
