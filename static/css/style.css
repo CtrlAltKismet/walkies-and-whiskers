@@ -1130,7 +1130,7 @@ footer a:hover {
 
     .scrapbook-image-wide img {
         height: auto;
-        object-fit: absolute;
+        object-fit: contain;
     }
 }
 
