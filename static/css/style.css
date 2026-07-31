@@ -380,7 +380,8 @@ nav form {
 
 /* Main paper container */
 
-main > section {
+main > section,
+main > .about-page {
     position: relative;
     isolation: isolate;
     padding: clamp(1.5rem, 5vw, 3.5rem);
@@ -396,7 +397,8 @@ main > section {
     box-shadow: var(--shadow-large);
 }
 
-main > section::before {
+main > section::before,
+main > .about-page::before {
     position: absolute;
     z-index: -1;
     top: 0;
@@ -414,7 +416,8 @@ main > section::before {
         );
 }
 
-main > section::after {
+main > section::after,
+main > .about-page::after {
     position: absolute;
     z-index: -1;
     top: -4rem;
@@ -426,10 +429,12 @@ main > section::after {
     border-radius: 45% 55% 63% 37%;
     transform: rotate(18deg);
 }
-
 /* Nested page sections */
 
-main > section > section {
+main > section > section,
+.about-page > section,
+.about-page > .about-intro,
+.about-page > .about-contact {
     position: relative;
     margin-top: 2rem;
     padding: clamp(1.25rem, 4vw, 2rem);
@@ -440,7 +445,9 @@ main > section > section {
     box-shadow: var(--shadow-small);
 }
 
-main > section > section:nth-of-type(even) {
+main > section > section:nth-of-type(even),
+.about-page > section:nth-of-type(even),
+.about-page > .about-contact {
     border-left-color: var(--colour-terracotta);
     background: rgba(238, 226, 208, 0.42);
 }
@@ -780,7 +787,8 @@ footer a:hover {
         padding-top: 1.5rem;
     }
 
-    main > section {
+    main > section,
+    main > .about-page {
         padding: 1.4rem;
         border-radius: 20px 12px 18px 14px;
     }
@@ -838,11 +846,15 @@ footer a:hover {
         width: calc(100% - 0.7rem);
     }
 
-    main > section {
+    main > section,
+    main > .about-page {
         padding: 1.15rem;
     }
 
-    main > section > section {
+    main > section > section,
+    .about-page > section,
+    .about-page > .about-intro,
+    .about-page > .about-contact {
         padding: 1rem;
     }
 
