@@ -6,7 +6,7 @@ from .models import Booking
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
     """Configure bookings in Django admin."""
-    
+
     list_display = (
         "id",
         "user",
