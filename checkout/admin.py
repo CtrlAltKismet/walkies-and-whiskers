@@ -6,7 +6,7 @@ from .models import Order
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     """Configure Stripe payment records in Django Admin."""
-    
+
     list_display = (
         "id",
         "booking",

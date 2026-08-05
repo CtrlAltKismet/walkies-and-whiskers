@@ -6,17 +6,17 @@ from bookings.models import Booking
 
 class Order(models.Model):
     """Store Stripe payment details for a booking."""
-    
+
     STATUS_PAID = "paid"
     STATUS_PENDING = "pending"
     STATUS_FAILED = "failed"
-    
+
     STATUS_CHOICES = [
         (STATUS_PAID, "Paid"),
         (STATUS_PENDING, "Pending"),
         (STATUS_FAILED, "Failed"),
     ]
-    
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.PROTECT,
@@ -50,10 +50,10 @@ class Order(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
     )
-    
+
     class Meta:
         ordering = ["-created_at"]
-        
+
     def __str__(self):
         """Return a readable order description."""
         return (
