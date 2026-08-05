@@ -6,7 +6,7 @@ from .models import Pet
 @admin.register(Pet)
 class PetAdmin(admin.ModelAdmin):
     """Configure pet profiles in Django admin."""
-    
+
     list_display = (
         "name",
         "species",

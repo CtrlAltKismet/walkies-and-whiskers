@@ -4,19 +4,17 @@ from django.db import models
 
 class Pet(models.Model):
     """Store a pet profile belonging to a registered user."""
-    
-    
+
     SIZE_SMALL = "small"
     SIZE_MEDIUM = "medium"
     SIZE_LARGE = "large"
-    
-    
+
     SIZE_CHOICES = [
         (SIZE_SMALL, "Small"),
         (SIZE_MEDIUM, "Medium"),
         (SIZE_LARGE, "Large"),
     ]
-    
+
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -55,10 +53,10 @@ class Pet(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
     )
-    
+
     class Meta:
         ordering = ["name"]
-        
+
     def __str__(self):
         """Return the pet's name for admin and debugging displays."""
         return self.name

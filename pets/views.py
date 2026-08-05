@@ -56,82 +56,82 @@ def pet_list(request):
 @login_required
 def pet_detail(request, pet_id):
     """Display a detailed pet profile belonging to the logged-in user."""
-    
+
     pet = get_object_or_404(
         Pet,
         id=pet_id,
         owner=request.user,
     )
-    
+
     context = {
         "pet": pet,
     }
-    
+
     return render(
         request,
         "pets/pet_detail.html",
         context,
     )
-    
+
 
 @login_required
 def pet_update(request, pet_id):
     """Allow a user to update one of their own pet profiles."""
-    
+
     pet = get_object_or_404(
         Pet,
         id=pet_id,
         owner=request.user,
     )
-    
+
     if request.method == "POST":
         form = PetForm(
             request.POST,
             instance=pet,
         )
-        
+
         if form.is_valid():
             pet = form.save()
-            
+
             messages.success(
                 request,
                 f"{pet.name}'s profile has been updated successfully.",
             )
-            
+
             return redirect(
                 "pet_detail",
                 pet_id=pet.id,
             )
     else:
         form = PetForm(instance=pet)
-        
+
     context = {
         "form": form,
         "pet": pet,
     }
-    
+
     return render(
         request,
         "pets/pet_update.html",
         context,
     )
-    
+
 
 @login_required
 def pet_delete(request, pet_id):
     """Allow a user to delete one of their own pet profiles."""
-    
+
     pet = get_object_or_404(
         Pet,
         id=pet_id,
         owner=request.user,
     )
-    
+
     has_booking_history = pet.bookings.exists()
-    
+
     if request.method == "POST":
         pet_name = pet.name
-        
+
         if has_booking_history:
             upcoming_bookings = pet.bookings.filter(
                 status__in=[
@@ -139,7 +139,7 @@ def pet_delete(request, pet_id):
                     "confirmed",
                 ],
             )
-            
+
             for booking in upcoming_bookings:
                 booking_datetime = timezone.make_aware(
                     datetime.combine(
@@ -147,45 +147,45 @@ def pet_delete(request, pet_id):
                         booking.booking_time,
                     )
                 )
-                
+
                 if booking_datetime > timezone.now():
                     booking.status = "cancelled"
-                    
+
                     booking.save(
                         update_fields=[
                             "status",
                             "updated_at",
                         ]
                     )
-            
+
             pet.is_active = False
-            
+
             pet.save(
                 update_fields=[
                     "is_active",
                     "updated_at",
                 ]
             )
-            
+
             messages.success(
                 request,
                 f"{pet_name}'s profile has been archived successfully.",
             )
         else:
             pet.delete()
-            
+
             messages.success(
                 request,
                 f"{pet_name}'s profile has been deleted successfully.",
             )
-        
+
         return redirect("pet_list")
-         
+
     context = {
         "pet": pet,
         "has_booking_history": has_booking_history,
     }
-    
+
     return render(
         request,
         "pets/pet_delete.html",
