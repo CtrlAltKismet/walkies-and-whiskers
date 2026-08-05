@@ -3865,7 +3865,130 @@ All three custom JavaScript files were checked using JSHint with ECMAScript 6 en
 | --- | --- | --- | --- | --- | --- |
 | VALID 04 | Python style | Check custom Python files using the chosen PEP8 checker | No unresolved style errors remain | All checked custom Python files passed with no unresolved style errors | Pass |
 
-### Bugs and Fixes
+PEP8 was tested using CI Python Linter and results can be seen below for each app.
+
+### Accounts App:
+
+forms.py
+
+<img width="1368" height="553" alt="accounts - formspy" src="https://github.com/user-attachments/assets/08c24f91-65c8-4046-90f0-71bfe924722d" />
+
+urls.py
+
+<img width="1734" height="693" alt="accounts - urlspy" src="https://github.com/user-attachments/assets/773e25a7-3d56-4cb1-9dfc-e72268d71280" />
+
+views.py
+
+<img width="1657" height="671" alt="accounts - viewspy" src="https://github.com/user-attachments/assets/fc7f147e-61f0-4245-84de-da8bb063ba09" />
+
+### Bookings app:
+
+admin.py
+
+<img width="1674" height="674" alt="bookings - adminpy" src="https://github.com/user-attachments/assets/ebb89b56-3d06-4ec8-b0f0-1a57323a0daa" />
+
+forms.py
+
+<img width="1726" height="710" alt="bookings - formspy" src="https://github.com/user-attachments/assets/231fbbb6-e47c-48a8-8f7e-7d0b0f504442" />
+
+
+models.py
+
+<img width="1728" height="710" alt="bookings - modelspy" src="https://github.com/user-attachments/assets/30c2dc16-b4ae-4ae6-94db-dcd5ab9632be" />
+
+
+urls.py
+
+<img width="1652" height="719" alt="bookings - urlspy" src="https://github.com/user-attachments/assets/a65de16e-c368-45af-becf-92bbd3340179" />
+
+
+views.py
+
+<img width="1746" height="686" alt="bookings - viewspy" src="https://github.com/user-attachments/assets/5a73bd07-2daa-4831-b92c-af5afb005e90" />
+
+
+weather.py
+
+<img width="1686" height="655" alt="bookings - weatherpy" src="https://github.com/user-attachments/assets/375a1938-a914-4d1f-a2b9-751b8e1fc5da" />
+
+### Checkout App:
+
+admin.py
+
+<img width="1637" height="680" alt="checkout - adminpy" src="https://github.com/user-attachments/assets/66bf90c6-63d0-44a8-81a3-792b83fab115" />
+
+
+models.py
+
+<img width="1720" height="702" alt="checkout - modelspy" src="https://github.com/user-attachments/assets/8f2c71fe-167e-4448-8196-aecbb9fdac81" />
+
+
+urls.py
+
+<img width="1677" height="690" alt="checkout - urlspy" src="https://github.com/user-attachments/assets/b04179ff-ec67-4cf2-951e-313d84031ec5" />
+
+
+views.py
+
+<img width="1724" height="683" alt="checkout - viewspy" src="https://github.com/user-attachments/assets/4248b9db-86db-4493-ba6a-d348146f4579" />
+
+
+### Home App:
+
+urls.py
+
+<img width="1726" height="694" alt="home - urlspy" src="https://github.com/user-attachments/assets/01d30555-a022-4919-8af6-22751c958966" />
+
+views.py
+
+<img width="1614" height="692" alt="home - viewspy" src="https://github.com/user-attachments/assets/b9c81c4c-6914-49a4-85fc-616547f6c162" />
+
+
+### Pets App:
+
+admin.py
+
+<img width="1660" height="652" alt="pets - adminpy" src="https://github.com/user-attachments/assets/9d4fce8d-72f2-4df1-af65-86b27a58aa21" />
+
+
+forms.py
+
+<img width="1689" height="684" alt="pets - formspy" src="https://github.com/user-attachments/assets/0de58893-750b-4a3a-9890-08b12049a4f3" />
+
+
+models.py
+
+<img width="1698" height="712" alt="pets - modelspy" src="https://github.com/user-attachments/assets/347d1c55-724f-4b85-a209-267f19f22b22" />
+
+
+urls.py
+
+<img width="1682" height="659" alt="pets - urlspy" src="https://github.com/user-attachments/assets/99c2a728-dc57-4fe9-a8cc-713183ed5fcb" />
+
+
+views.py
+
+<img width="1693" height="665" alt="pets - viewspy" src="https://github.com/user-attachments/assets/7d2b4601-4648-44b2-aded-b69b3f7958cd" />
+
+
+### Services App:
+
+admin.py
+
+<img width="1732" height="690" alt="services - adminpy" src="https://github.com/user-attachments/assets/b256eead-0902-47fb-b63f-c17a9a3964bd" />
+
+
+models.py
+
+<img width="1719" height="686" alt="services - modelspy" src="https://github.com/user-attachments/assets/c1ef2321-4f1c-4612-afa3-a93cf190110c" />
+
+
+views.py
+
+<img width="1714" height="700" alt="services - viewspy" src="https://github.com/user-attachments/assets/e5fefdba-f807-4a23-805a-3d96164fc561" />
+
+
+### Bugs and Fixes:
 
 The following bugs have been recorded during development.
 
