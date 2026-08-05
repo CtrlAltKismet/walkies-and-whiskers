@@ -7,7 +7,7 @@ from .models import Service
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
     """Configure Service records in Django admin."""
-    
+
     list_display = (
         "name",
         "price",
