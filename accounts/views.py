@@ -95,44 +95,44 @@ class CustomLogoutView(auth_views.LogoutView):
         )
 
         return response
-    
-    
+
+
 class CustomPasswordChangeView(auth_views.PasswordChangeView):
     """Allow a logged-in user to change their password."""
-    
+
     template_name = "accounts/password_change.html"
     form_class = CustomPasswordChangeForm
     success_url = reverse_lazy("password_change_done")
-    
+
     def form_valid(self, form):
         """Display a success message after changing the password."""
         response = super().form_valid(form)
-        
+
         messages.success(
             self.request,
-            "Your password has been changed successfully."
+            "Your password has been changed successfully.",
         )
-        
+
         return response
-    
+
 
 @login_required
 def dashboard(request):
     """Display the logged-in user's account dashboard."""
-    
+
     pet_count = Pet.objects.filter(
         owner=request.user,
     ).count()
-    
+
     booking_count = Booking.objects.filter(
         user=request.user,
     ).count()
-    
+
     pending_booking_count = Booking.objects.filter(
         user=request.user,
         status=Booking.STATUS_PENDING,
     ).count()
-    
+
     upcoming_bookings = Booking.objects.filter(
         user=request.user,
         status=Booking.STATUS_CONFIRMED,
@@ -141,14 +141,14 @@ def dashboard(request):
         "booking_date",
         "booking_time",
     )[:3]
-    
-    context= {
+
+    context = {
         "pet_count": pet_count,
         "booking_count": booking_count,
         "pending_booking_count": pending_booking_count,
         "upcoming_bookings": upcoming_bookings,
     }
-    
+
     return render(
         request,
         "accounts/dashboard.html",
