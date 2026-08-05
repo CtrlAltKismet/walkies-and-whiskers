@@ -2538,6 +2538,7 @@ The Service model is controlled by the business. Regular users can view services
 | Google Fonts | Loads Fraunces, Nunito and Caveat. |
 | Font Awesome | Displays social media icons on the About page. |
 | ChatGPT | Created the original project photographs and branding assets. |
+| CI Python Linter | Test PEP8 code. |
 
 The exact package versions are recorded in `requirements.txt`.
 
