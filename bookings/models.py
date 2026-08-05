@@ -7,17 +7,17 @@ from services.models import Service
 
 class Booking(models.Model):
     """Store a pet-care booking created by a registered user."""
-    
+
     STATUS_PENDING = "pending_payment"
     STATUS_CONFIRMED = "confirmed"
     STATUS_CANCELLED = "cancelled"
-    
+
     STATUS_CHOICES = [
         (STATUS_PENDING, "Pending payment"),
         (STATUS_CONFIRMED, "Confirmed"),
         (STATUS_CANCELLED, "Cancelled"),
     ]
-    
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -56,13 +56,13 @@ class Booking(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
     )
-    
+
     class Meta:
         ordering = [
             "booking_date",
             "booking_time",
         ]
-        
+
     def __str__(self):
         """Return a readable booking description."""
         return (
